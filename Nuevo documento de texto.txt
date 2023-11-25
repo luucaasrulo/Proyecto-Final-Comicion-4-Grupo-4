@@ -1,8 +1,0 @@
-*Instalar entorno virtual
-python -m venv .venv_proyecto_final
-
-*Activar entorno Virtual
-.venv_proyecto_final\Scripts\activate
-
-*Instalar dJango
-pip install django

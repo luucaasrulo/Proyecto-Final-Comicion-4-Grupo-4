@@ -2,5 +2,10 @@ from django.shortcuts import render
 
 def index(request):
     template_name = 'index.html'
+    context = {'nombre': 'Informatorio'}
+    return render(request,template_name,context)
 
-    return render(request,template_name)
+def contacto(request):
+    template_name = 'contacto.html'
+    context = {'nombre': 'contacto'}
+    return render(request,template_name,context)

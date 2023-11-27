@@ -5,8 +5,8 @@ from django.db import transaction
 
 class RegistrarUsuariosForm(UserCreationForm):
     class Meta:
-        model= Usuarios
-        fields= ['nombre','apellido','fecha_nacimiento','username','password1','password2','email','imagen']
+        model = Usuarios
+        fields = ['nombre','apellido','fecha_nacimiento','username','password1','password2','email','imagen']
 
     @transaction.atomic
     def save(self):

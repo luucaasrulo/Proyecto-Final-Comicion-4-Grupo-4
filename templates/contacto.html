@@ -4,6 +4,10 @@
 <title>contacto #dinamico</title>
 {% endblock %}
 
+{% block navegacion %}
+{% include "navegacion.html" %}
+{% endblock %}
+
 {% block contenido %}
 <p>hola desde el index</p>
 {% for nombre in nombres %}

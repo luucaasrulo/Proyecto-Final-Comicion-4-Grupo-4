@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block titulo %}
-<title> Registrar Usuario </title>
+<title> Iniciar Sesion </title>
 {% endblock %}
 
 {% block navegacion %}
@@ -11,10 +11,9 @@
 
 {% block contenido %}
 
-<form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+<form method="post">{% csrf_token %}
     {{form.as_p}}
-    <button type="submit" class="btn btn-primary">Registrarse</button>
+    <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
 </form>
 
 {% endblock %}
-

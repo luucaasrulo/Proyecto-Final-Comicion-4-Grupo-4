@@ -10,7 +10,7 @@ class RegistrarUsuariosForm(UserCreationForm):
 
     @transaction.atomic
     def save(self):
-        user= super().save(commit=False)
+        user= super().save(commit=True)
         user.is_superuser = False
         user.is_staff = False
         return user

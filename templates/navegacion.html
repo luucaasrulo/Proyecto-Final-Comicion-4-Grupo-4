@@ -1,13 +1,14 @@
 {% load static %}
+<link rel='stylesheet' href='{% static "css/estilos.css" %}'></link>
 <nav class="row navbar bg-dark border-bottom navbar-expand-lg border-body " data-bs-theme="dark">
     <div class="col-1 container-fluid d-flex justify-content-start">
         <a href="{% url 'inicio' %}">
-            <img src="{% static 'imagen/logo.png' %}" alt="logo " width="90" height="70">
+            <img src="{% static 'imagen/logo.png' %}" alt="logo " width="auto" height="70">
         </a>
 
     </div>
     <div class="col-1 container-fluid d-flex justify-content-start">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        <button class="navbar-toggler active" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,13 +30,11 @@
         <div class="container-fluid">
             <form class="d-flex" role="search">
                 <input class="form-control me-auto" type="search" placeholder="Buscar" aria-label="Search">
-                <button class="btn btn-secondary" type="submit">Buscar</button>
+                <button class="btn btn-outline-secondary active" type="submit">Buscar</button>
             </form>
         </div>
 
     </div>
-
-    
     <div class="col-3 container-fluid d-flex justify-content-end">
         <ul class="navbar-nav">
             {% if user.is_authenticated %}

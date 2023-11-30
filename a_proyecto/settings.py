@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #Aplicaciones proías definidas
     'apps.usuarios',
+    'apps.post',
 ]
 #------------------------------------------------------------------------------------------------
 MIDDLEWARE = [

@@ -67,7 +67,7 @@ WSGI_APPLICATION = 'a_proyecto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_disco',
+        'NAME': 'db_hi',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': 'localhost',

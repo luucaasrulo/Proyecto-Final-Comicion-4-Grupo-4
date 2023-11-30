@@ -1,4 +1,5 @@
 {% load static %}
+<link rel='stylesheet' href='{% static "css/estilos.css" %}'></link>
 <nav class="row navbar bg-dark border-bottom navbar-expand-lg border-body " data-bs-theme="dark">
     <div class="col-1 container-fluid d-flex justify-content-start">
         <a href="{% url 'inicio' %}">
@@ -41,7 +42,7 @@
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">
                     <img src="{{user.imagen.url}}" alt="perfil" width="70" height="auto"
-                        class="rounded-circle flex-shrink-0">
+                        class="rounded-circle flex-shrink-20">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="#">{{user.username}}</a></li>

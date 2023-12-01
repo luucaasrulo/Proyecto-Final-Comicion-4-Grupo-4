@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Post</title>
+{% endblock %}
+
+{% block contenido %}
+{% if post %}
+<div clas="container-fluid" style="margin-top: 2%;">
+    <div>
+        <h3>
+            <strong>Post</strong>
+        </h3>
+    </div>
+</div>
+
+{% endblock %}

@@ -8,11 +8,35 @@
 {% block contenido %}
 {% if post %}
 <div clas="container-fluid" style="margin-top: 2%;">
-    <div>
-        <h3>
+    <div class="mbr-section-head">
+        <h3 clas="mbr-section-title mbr-font-style align-center mb-0 display-2" style="text-align: center;">
             <strong>Post</strong>
         </h3>
     </div>
-</div>
+    <div clas="row" style="margin-top: 2%;">
+        {% for p in post %}
 
-{% endblock %}
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{ p.imagen.url }}" class="img-fluid rounded-start" alt="{{ p.titulo }}">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">{{p.titulo}}</h5>
+                        <p class="card-text">{{p.resumen}}</p>
+                    </div>
+                    <div class="row">
+                        <p style="text-align: center;" class="mbr-timeline-date"><small
+                                class="text-body-secondary">{{p.fecha_post}}{{p.categoria}}</small></p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Agregado por: {{p.colaborador}}</li>
+                            <li class="list-group-item">Categoria: {{p.categoria}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}{% endif %}
+    {% endblock %}

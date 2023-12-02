@@ -10,19 +10,19 @@ from .models import Categoria, Post
 
 class AgregarCatergoria(CreateView):
     model = Categoria
-    files = {'nombres'}
+    fields = {'nombre'}
     template_name = 'post/agregar_categoria.html'
-    """success_url = reverse_lazy('inicio')"""
+    success_url = reverse_lazy('inicio')
 
 class AgregarPost(CreateView):
     model = Post
-    fields = ['titulo','descripcion','imagen','categoria']
+    fields = ['titulo','descripcion','categoria','imagen']
     template_name = 'post/agregar_post.html'
     success_url = reverse_lazy('inicio')
 
-    def form_valid(self, form):
+    """def form_valid(self, form):
         form.instance.colaborador = self.request.user
-        return super().form_valid(form)
+        return super().form_valid(form)"""
 
 class ListarPost(ListView):
     model= Post

@@ -22,21 +22,20 @@
                     <img src="{{ p.imagen.url }}" class="img-fluid rounded-start" alt="{{ p.titulo }}">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body">
+                    <div class="card-body list-group list-group-flush">
                         <h5 class="card-title">{{p.titulo}}</h5>
                         <p class="card-text">{{p.resumen}}</p>
-                    </div>
-                    <div class="row">
-                        <p style="text-align: center;" class="mbr-timeline-date"><small
-                                class="text-body-secondary">{{p.fecha_post}}{{p.categoria}}</small></p>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Agregado por: {{p.colaborador}}</li>
-                            <li class="list-group-item">Categoria: {{p.categoria}}</li>
-                        </ul>
+                        <p class="mbr-timeline-date text-body-secondary">{{p.fecha_post}}</p>
+                        <li class="list-group-item"><img src="{{p.colaborador.imagen.url}}" alt="perfil" width="40"
+                                height="auto" class="rounded-circle flex-shrink-0"> {{p.colaborador}}
+                            {{p.colaborador.apellido}}
+                        </li>
+                        <li class="list-group-item">Categoria: {{p.categoria}}</li>
                     </div>
                 </div>
             </div>
         </div>
+        {% endfor %}{% endif %}
     </div>
-    {% endfor %}{% endif %}
-    {% endblock %}
+</div>
+{% endblock %}

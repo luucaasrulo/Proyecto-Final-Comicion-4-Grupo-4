@@ -2,14 +2,55 @@
 {% load static %}
 
 {% block titulo %}
-<title> Iniciar Sesion </title>
+<title>Iniciar Sesión</title>
+{% endblock %}
+
+{% block css %}
+<link rel='stylesheet' href='{% static "css/registro.css" %}'>
 {% endblock %}
 
 {% block contenido %}
-
-<form method="post">{% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-primary">Iniciar Sesion</button>
-</form>
-
+<section class="signup">
+    <div class="container">
+        <div class="row formulario">
+            <div class="col-md-8 offset-md-2">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Iniciar Sesión</h2>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="id_username">
+                                    <i class="fas fa-user"></i>
+                                </label>
+                                {{ form.username }}
+                            </div>
+                            <div class="form-group">
+                                <label for="id_password">
+                                    <i class="fas fa-lock"></i>
+                                </label>
+                                {{ form.password }}
+                            </div>
+                            {% if messages %}
+                            <ul class="messages">
+                                {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                            <div class="form-group form-button d-flex justify-content-center align-items-center">
+                                <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                            </div>
+                            <a href="{% url 'apps.usuarios:registrar' %}" class="signup-image-link">Crear una cuenta</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.getElementById("id_password").placeholder = "Contraseña";
+    document.getElementById("id_username").placeholder = "Nombre de Usuario";
+</script>
 {% endblock %}

@@ -21,17 +21,34 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'contacto' %}">Contactos</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Categoria
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        {% for i in categorias %}
+                        <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% if user.es_colaborador %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacto' %}">Contactos</a>
+                    <a class="nav-link" href="{% url 'apps.post:agregar_post' %}">Agregar Post</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacto' %}">Contactos</a>
+                    <a class="nav-link" href="{% url 'apps.post:agregar_categoria' %}">Agregar Categoria</a>
                 </li>
-    
+                {% endif %}
             </ul>
         </div>
-
-        
         <div class="container-fluid">
             <form class="d-flex" role="search">
                 <input class="form-control me-auto" type="search" placeholder="Buscar" aria-label="Search">
@@ -51,7 +68,6 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">{{user.username}}</a></li>
-                        <li><a class="dropdown-item" href="#">Another </a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -70,5 +86,4 @@
             </ul>
         </div>
     </div>
-
 </nav>

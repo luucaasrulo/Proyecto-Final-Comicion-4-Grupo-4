@@ -1,4 +1,5 @@
 
+from typing import Any
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -35,6 +36,12 @@ class ListarPost(ListView):
     template_name = 'post/listar_post.html'
     context_object_name = 'post'
 
+    def get_context_data(self):
+        context = super().get_context_data()
+        categorias = Categoria.objects.all()
+        context['categorias'] = categorias
+        return context
+
 class EliminarPost(DeleteView):
     model = Post
     template_name = 'post/confirmar_eliminar.html'
@@ -45,6 +52,14 @@ class ContenidoPost(DetailView):
     template_name = 'post/contenido_post.html'
     context_object_name = 'post'
     
-
-
+def listar_por_categoria(request, categoria):
+    categoria = Categoria.objects.filter(nombre = categoria)
+    post = Post.objects.filter(categoria = categoria[0].id).order_by('fecha_post')
+    categorias = Categoria.objects.all()
+    template_name = 'post/listar_post.html'
+    contexto = {
+        'post': post,
+        'categorias' : categorias,        
+    }
+    return render(request,template_name,contexto)
 

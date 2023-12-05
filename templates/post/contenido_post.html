@@ -24,17 +24,15 @@
                 <img src="{{ post.imagen.url }}" class="d-block w-100">
                 <p style="text-align: left;" class="mbr-timeline-date"><small class="text-body-secondary">Fecha de
                         posteo: {{post.fecha_post}}</small></p>
+                <li class="list-group-item"><img src="{{post.colaborador.imagen.url}}" alt="perfil" width="40"
+                        height="auto" class="rounded-circle flex-shrink-0"> {{post.colaborador}}
+                    {{post.colaborador.apellido}}
+                </li>
             </div>
         </div>
         <div class="col-12 col-lg">
             <div class="text-wrapper">
                 <h2 class="mbr-section-title mbr-fonts-style mb-3 display-5"><strong>{{post.titulo}}</strong></h2>
-                
-                    <li class="list-group-item"><img src="{{post.colaborador.imagen.url}}" alt="perfil" width="40"
-                            height="auto" class="rounded-circle flex-shrink-0"> {{post.colaborador}}
-                        {{post.colaborador.apellido}}
-                    </li>
-                
                 <p class="mbr-text mbr-fonts-style display-7">{{post.contenido}}</p>
             </div>
         </div>

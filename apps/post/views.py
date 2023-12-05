@@ -38,6 +38,7 @@ class ListarPost(ListView):
 class EliminarPost(DeleteView):
     model = Post
     template_name = 'post/confirmar_eliminar.html'
+    success_url = reverse_lazy('inicio')
 
 class ContenidoPost(DetailView):
     model = Post

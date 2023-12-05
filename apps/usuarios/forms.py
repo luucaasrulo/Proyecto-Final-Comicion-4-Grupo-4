@@ -2,7 +2,6 @@ from .models import Usuarios
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 
-
 class RegistrarUsuariosForm(UserCreationForm):
     class Meta:
         model = Usuarios

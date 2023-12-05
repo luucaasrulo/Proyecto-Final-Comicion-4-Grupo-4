@@ -2,15 +2,109 @@
 {% load static %}
 
 {% block titulo %}
-<title> Registrar Usuario </title>
+    <title>Registrar Usuario</title>
 {% endblock %}
-
+{% block css %}
+    <link rel='stylesheet' href='{% static "css/registro.css" %}'>
+{% endblock %}
 {% block contenido %}
-
-<form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
-    {{form.as_p}}
-    <button type="submit" class="btn btn-darck">Registrarse</button>
-</form>
-
+<section class="signup">
+    <div class="container">
+        <div class="row formulario">
+            <div class="col-md-8 offset-md-2">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Registrarse</h2>
+                        <form enctype="multipart/form-data" action="" method="post" class="mi-formulario" id="formulario">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6" id="form_nombre">
+                                    <div class="form-group">
+                                        <label for="id_nombre"><i class="fa-solid fa-user"></i></i></label>
+                                        {{ form.nombre }}
+                                        <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Primera letra mayuscula y un minimo de 2 caracteres y un maximo de 20.</p>
+                                </div>
+                                <div class="col-md-6" id="form_apellido">
+                                    <div class="form-group">
+                                        <label for="id_apellido">
+                                            <i class="fas fa-user"></i>
+                                        </label>
+                                        {{ form.apellido }}
+                                        <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Primera letra mayuscula y un minimo de 2 caracteres y un maximo de 20.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" id="form_fecha_nacimiento">
+                                    <div class="form-group">
+                                        <label for="id_fecha_nacimiento">
+                                            <i class="fas fa-calendar"></i>
+                                        </label>
+                                        {{ form.fecha_nacimiento }}
+                                        <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Formato:YYYY-MM-DD</p>
+                                </div>
+                                <div class="col-md-6" id="form_username">
+                                    <div class="form-group">
+                                        <label for="id_username">
+                                            <i class="fas fa-user"></i>
+                                        </label>
+                                        {{ form.username }}
+                                        <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Minimo de 2 caracteres,solo letras y guiones.</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6" id="form_password1">
+                                    <div class="form-group">
+                                        <label for="id_password1">
+                                            <i class="fas fa-lock"></i>
+                                        </label>
+                                        {{ form.password1 }}
+                                        <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Su contraseña no puede ser similar a otros componentes de su información personal,
+                                        debe contener por lo menos 8 caracteres, y al menos 1 caracter especial.</p>
+                                </div>
+                                <div class="col-md-6" id="form_password2">
+                                    <div class="form-group">
+                                        <label for="id_password2">
+                                            <i class="fas fa-lock"></i>
+                                        </label>
+                                        {{ form.password2 }}
+                                        <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
+                                    </div>
+                                    <p class="formulario__input-error">Ambas contraseñas deben ser iguales.</p>
+                                </div>
+                            </div>
+                            <div class="form-group" id="form_email">
+                                <label for="id_email">
+                                    <i class="fas fa-envelope"></i>
+                                </label>
+                                {{ form.email }}
+                                <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
+                            </div>
+                            <div class="form-group">
+                                <label for="id_imagen">
+                                    <i class="fas fa-image"></i>
+                                </label>
+                                {{ form.imagen }}
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="btn btn-success" value="Crear cuenta">
+                            </div>
+                            <a href="{% url 'apps.usuarios:iniciar_sesion' %}" class="signup-image-link">Ya estoy registrado</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src='{% static "js/registro.js" %}'></script>
 {% endblock %}
-

@@ -11,6 +11,7 @@ body {
     min-height: 100vh; /* Al menos el 100% de la altura visible del viewport */
     display: flex;
     flex-direction: column;
+    color:white;
 }
 
 header {

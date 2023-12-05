@@ -40,7 +40,7 @@ class EliminarPost(DeleteView):
     template_name = 'post/confirmar_eliminar.html'
 
 class ContenidoPost(DetailView):
-    modelo = 'Post'
+    model = Post
     template_name = 'post/contenido_post.html'
     context_object_name = 'post'
     

@@ -11,7 +11,7 @@ class Categoria(models.Model):
 class Post(models.Model):
     titulo = models.CharField(max_length=20, null=False)
     autor = models.CharField(max_length=20, null=False)
-    resumen = models.TextField()
+    resumen = models.CharField(max_length=150, null=False)
     contenido = models.TextField()
     fecha_post = models.DateTimeField(auto_now_add=True)
     colaborador = models.ForeignKey(Usuarios, on_delete=models.SET_NULL, null=True,default=2)

@@ -7,36 +7,44 @@
 
 {% block contenido %}
 {% if post %}
-<div class="container-fluid" style="margin-top: 2%;">
-    <div class="mbr-section-head">
-        <h3 class="mbr-section-title mbr-font-style align-center mb-0 display-2" style="text-align: center;">
-            <strong>Post</strong>
-        </h3>
-    </div>
-    <div class="row" style="margin-top: 2%;">
-        {% for p in post %}
+<div class="container-fluid" style="margin-top:2%">
+    <h3 clsss="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center;">
+        <strong>HERRAMIENTAS INFORMATICAS</strong>
+    </h3>
+</div>
+<div class="row" style="margin-bottom: 2%;">
+    {% for p in post %}
+    <div class="card mb-3 " style="max-width: 540px;">
 
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class=" g-0">
-                <div class="card-img-top" style="display: block; width: 100%; margin: auto;">
-                    <img src="{{ p.imagen.url }}" class="img-fluid rounded-start" alt="{{ p.titulo }}">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body list-group list-group-flush">
-                        <h5 class="card-title">{{p.titulo}}</h5>
-                        <p class="card-text">{{p.resumen}}</p>
-                        <p class="mbr-timeline-date text-body-secondary">{{p.fecha_post}}</p>
-                        <li class="list-group-item"><img src="{{p.colaborador.imagen.url}}" alt="perfil" width="40"
-                                height="auto" class="rounded-circle flex-shrink-0"> {{p.colaborador}}
-                            {{p.colaborador.apellido}}
-                        </li>
-                        <li class="list-group-item">Categoria: {{p.categoria}}</li>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-4" style="display: block; width: 100%; margin: auto;">
+            <img src="{{ p.imagen.url }}" class="card-img-top w-5" alt="{{p.titulo}}">
         </div>
-        {% endfor %}
+
+        <div class="card-body">
+            <h5 class="card-title ">{{p.titulo}}</h5>
+            <p class="card-text ">{{p.resumen}}</p>
+            <p class="mbr-timeline-date text-body-secondary ">{{p.fecha_post}}</p>
+        </div>
+
+        <ul class="list-group list-group-flush">
+
+            <li class="list-group-item"><img src="{{p.colaborador.imagen.url}}" alt="perfil" width="40" height="auto"
+                    class="rounded-circle flex-shrink-0"> {{p.colaborador}}
+                {{p.colaborador.apellido}}
+            </li>
+            <li class="list-group-item">Categoria: {{p.categoria}}</li>
+        </ul>
+
+        <div class="card-body">
+            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-primary" style="font-size: small;">Leer
+                mas</a>
+        </div>
+
     </div>
+    {% empty %}
+    <h1>No hay post cargados todavia</h1>
+    {% endfor %}
 </div>
 {% endif %}
 {% endblock %}
+

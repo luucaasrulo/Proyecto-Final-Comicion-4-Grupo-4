@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+<title>acerca #dinamico</title>
+{% endblock %}
+{% block css %}
+<link rel='stylesheet' href='{% static "css/contacto.css" %}'>
+{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="md-9 text-center acerca">
+            <h2>Te podria interesar</h2>
+            <p>
+                Si eres programador o estas iniciándote en este mundo fantástico este blog te ayudará a dar los primeros
+                pasos.
+                Desde el Informatorio de la Provincia del Chaco, el grupo de desarrollo full stack N° 4, Comisión 4,
+                Cohorte 2023 ha
+                desarrollado este sitio para ti.
+            </p>
+            <p>
+                Describimos las mas populares herramientas que se utilizan en el desarrollo web, desde editores de
+                texto, lenguajes
+                de programación, framework y versionadores.
+            </p>
+            <p>
+                Navegando en este sitio podrás aprender conceptos y características de las mismas, las que se encuentran
+                catalogadas
+                para mejorar tu búsqueda y entendimiento.
+
+            </p>
+            <p>
+                También podrás formar parte de nuestra comunidad. Para ello te pedimos que te registres y así estarás
+                habilitado
+                para incorporar comentarios y aportar tu experiencia en el uso de cada una de estas herramientas. Eso si
+                manteniendo
+                una comunicación respetuosa.
+
+            </p>
+            <p>
+
+                Si estas interesado podrás solicitar ser colaborador. Perfil que te permitirá enriquecer este sitio
+                incorporando
+                otras herramientas, editando su contenido y arbitrando en los comentarios.
+
+            </p>
+            <p>
+                Anímate. Dale un vistazo
+            </p>
+            <a href="{% url 'contacto' %}" class="btn btn-primary">Ver mas...</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

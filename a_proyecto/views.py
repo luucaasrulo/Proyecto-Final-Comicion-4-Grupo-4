@@ -10,3 +10,7 @@ def contacto(request):
     nombres = ['Bruno','Carlos','Ian','Lucas']
     context = {'nombres': nombres}
     return render(request,template_name,context)
+def acerca(request):
+    template_name = 'acercade.html'
+    context = {}
+    return render(request,template_name,context)

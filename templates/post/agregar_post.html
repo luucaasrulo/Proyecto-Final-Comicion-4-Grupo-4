@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<title>Agregar post</title>
+{% endblock %}
+
+{% block contenido %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <h2>Agregar Post</h2>
+    <div>
+        {{form.as_p}}
+       <input type="submit" value="Gurdar" data-bs-togle="modal"> 
+    </div>
+</form>
+{% endblock %}

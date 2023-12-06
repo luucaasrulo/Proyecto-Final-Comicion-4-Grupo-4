@@ -12,4 +12,5 @@ class RegistrarUsuariosForm(UserCreationForm):
         user= super().save(commit=True)
         user.is_superuser = False
         user.is_staff = False
+        user.save()
         return user

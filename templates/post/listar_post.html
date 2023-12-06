@@ -14,32 +14,33 @@
 </div>
 <div class="row" style="margin-bottom: 2%;">
     {% for p in post %}
-    <div class="card mb-3 " style="max-width: 540px;">
+    <div class="col-md-4 sm-3">
+        <div class="card" style="text-align: center;">
+            <div class="card-img-top" style="display: block; width: 100%; margin: auto;">
+                <img src="{{ p.imagen.url }}" class="card-img-top w-5" alt="{{p.titulo}}">
+            </div>
 
-        <div class="col-md-4" style="display: block; width: 100%; margin: auto;">
-            <img src="{{ p.imagen.url }}" class="card-img-top w-5" alt="{{p.titulo}}">
+            <div class="card-body">
+                <h5 class="card-title ">{{p.titulo}}</h5>
+                <p class="card-text ">{{p.resumen}}</p>
+                <p class="mbr-timeline-date text-body-secondary ">{{p.fecha_post}}</p>
+            </div>
+
+            <ul class="list-group list-group-flush">
+
+                <li class="list-group-item"><img src="{{p.colaborador.imagen.url}}" alt="perfil" width="40"
+                        height="auto" class="rounded-circle flex-shrink-0"> {{p.colaborador}}
+                    {{p.colaborador.apellido}}
+                </li>
+                <li class="list-group-item">Categoria: {{p.categoria}}</li>
+            </ul>
+
+            <div class="card-body">
+                <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-primary"
+                    style="font-size: small;">Leer
+                    mas</a>
+            </div>
         </div>
-
-        <div class="card-body">
-            <h5 class="card-title ">{{p.titulo}}</h5>
-            <p class="card-text ">{{p.resumen}}</p>
-            <p class="mbr-timeline-date text-body-secondary ">{{p.fecha_post}}</p>
-        </div>
-
-        <ul class="list-group list-group-flush">
-
-            <li class="list-group-item"><img src="{{p.colaborador.imagen.url}}" alt="perfil" width="40" height="auto"
-                    class="rounded-circle flex-shrink-0"> {{p.colaborador}}
-                {{p.colaborador.apellido}}
-            </li>
-            <li class="list-group-item">Categoria: {{p.categoria}}</li>
-        </ul>
-
-        <div class="card-body">
-            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-primary" style="font-size: small;">Leer
-                mas</a>
-        </div>
-
     </div>
     {% empty %}
     <h1>No hay post cargados todavia</h1>
@@ -47,4 +48,3 @@
 </div>
 {% endif %}
 {% endblock %}
-

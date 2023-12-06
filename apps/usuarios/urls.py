@@ -1,7 +1,7 @@
 from django.urls import path,include
 from django.contrib.auth.views import LoginView, LogoutView
  
-from .views import *
+from .views import RegristrarUsuario
 
 
 app_name = 'apps.usuarios'

@@ -7,6 +7,6 @@ def index(request):
 
 def contacto(request):
     template_name = 'contacto.html'
-    nombres = ['Bruno','Carlos','Ian','Lucas']
+    nombres = ['Carlos','Ian','Lucas']
     context = {'nombres': nombres}
     return render(request,template_name,context)

@@ -13,6 +13,7 @@ urlpatterns = [
     path('contacto/',contacto, name='contacto'),
     path('usuarios/', include('apps.usuarios.urls')),
     path('post/', include('apps.post.urls')),
+    path('comentario/', include('apps.comentarios.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 urlpatterns += staticfiles_urlpatterns()

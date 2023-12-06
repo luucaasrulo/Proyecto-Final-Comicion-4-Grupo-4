@@ -12,9 +12,9 @@
         <strong>HERRAMIENTAS INFORMATICAS</strong>
     </h3>
 </div>
-<div class="row" style="margin-bottom: 2%;">
+<div class="row gap-3 container mx-auto p-2" style="margin-bottom: 2%;">
     {% for p in post %}
-    <div class="col-md-4 sm-3">
+    <div class="row col-md-4 sm-3">
         <div class="card" style="text-align: center;">
             <div class="card-img-top" style="display: block; width: 100%; margin: auto;">
                 <img src="{{ p.imagen.url }}" class="card-img-top w-5" alt="{{p.titulo}}">
@@ -35,11 +35,8 @@
                 <li class="list-group-item">Categoria: {{p.categoria}}</li>
             </ul>
 
-            <div class="card-body">
-                <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-primary"
-                    style="font-size: small;">Leer
-                    mas</a>
-            </div>
+            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-outline-dark" style="font-size: small;">Leer
+                mas</a>
         </div>
     </div>
     {% empty %}

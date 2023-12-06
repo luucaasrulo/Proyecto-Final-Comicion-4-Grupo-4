@@ -2,7 +2,7 @@ from django.urls import path
 
 
 
-from .views import AgregarCatergoria, AgregarPost,ListarPost,EliminarPost,ModificarPost,ContenidoPost,listar_por_categoria
+from .views import AgregarCatergoria, AgregarPost,ListarPost,EliminarPost,ModificarPost,contenido_post, listar_por_categoria
 
 
 app_name = 'apps.post'
@@ -13,7 +13,7 @@ urlpatterns = [
     path('listar_post/', ListarPost.as_view(), name='listar_post'),
     path('modificar_post/<int:pk>', ModificarPost.as_view(), name='modificar_post'),
     path('confirmar_eliminar/<int:pk>', EliminarPost.as_view(), name='confirmar_eliminar'),
-    path('contenido_post/<int:pk>', ContenidoPost.as_view(), name='contenido_post'),
+    path('contenido_post/<int:id>', contenido_post, name='contenido_post'),
     path('listar_por_categoria/<str:categoria>', listar_por_categoria, name='listar_por_categoria'),
 ]
 

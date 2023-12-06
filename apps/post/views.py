@@ -1,12 +1,15 @@
 
 from typing import Any
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
-from django.urls import reverse_lazy
-
+from django.urls import reverse_lazy, reverse
 
 from .models import Categoria, Post
+from apps.comentarios.models import Comentario
+from apps.comentarios.forms import ComentarioForm
+
 # Create your views here.
 
 class AgregarCatergoria(CreateView):
@@ -28,7 +31,7 @@ class AgregarPost(CreateView):
 class ModificarPost(UpdateView):
     model = Post
     fields = ['titulo','resumen','contenido','categoria','imagen']
-    template_name = 'post/modificar_post.html'
+    template_name = 'post/agregar_post.html'
     success_url = reverse_lazy('inicio')  
 
 class ListarPost(ListView):
@@ -47,10 +50,34 @@ class EliminarPost(DeleteView):
     template_name = 'post/confirmar_eliminar.html'
     success_url = reverse_lazy('inicio')
 
-class ContenidoPost(DetailView):
-    model = Post
+# class ContenidoPost(DetailView):
+#     model = Post
+#     template_name = 'post/contenido_post.html'
+#     context_object_name = 'post'
+
+def contenido_post(request,id):
+    post = Post.objects.get(id=id)
+    comentarios = Comentario.objects.filter(post=id)
+    form = ComentarioForm(request.POST)
+
+    if form.is_valid():
+        if request.user.is_authenticated:
+            aux = form.save(commit=False)
+            aux.post = post
+            aux.usuario = request.user
+            aux.save()
+            detalle_url = reverse('apps.post:contenido_post', kwargs={'id': post.id})
+            return HttpResponseRedirect(detalle_url)
+        else:
+            return redirect('apps.usuarios:iniciar_sesion')
+    
+    contexto = {
+        'post': post,
+        'form': form,
+        'comentarios': comentarios
+    }
     template_name = 'post/contenido_post.html'
-    context_object_name = 'post'
+    return render(request,template_name,contexto)
     
 def listar_por_categoria(request, categoria):
     categoria = Categoria.objects.filter(nombre = categoria)

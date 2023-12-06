@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     #Aplicaciones proías definidas
     'apps.usuarios',
     'apps.post',
+    'apps.comentarios',
 ]
 #------------------------------------------------------------------------------------------------
 MIDDLEWARE = [

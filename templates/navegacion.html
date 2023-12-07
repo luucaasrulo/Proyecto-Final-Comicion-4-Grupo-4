@@ -78,8 +78,11 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:actualizar_usuario' user.pk %}">Modificar perfil</a>
+                        </li>
                         <li><a class="dropdown-item" href="{% url 'apps.usuarios:cerrar_sesion' %}">Cerrar Sesion</a>
                         </li>
+
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'apps.usuarios:registrar' %}">Registrarse</a>

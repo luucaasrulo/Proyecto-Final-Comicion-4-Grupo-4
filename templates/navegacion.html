@@ -21,6 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'acerca' %}">Acerca de</a>
                 </li>
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
@@ -39,6 +40,7 @@
                         {% endfor %}
                     </ul>
                 </li>
+                -->
                 {% if user.es_colaborador %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'apps.post:agregar_post' %}">Agregar Post</a>
@@ -46,17 +48,22 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'apps.post:agregar_categoria' %}">Agregar Categoria</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'apps.usuarios:listar_usuarios' %}">Listar usuarios</a>
+                </li>
                 {% endif %}
             </ul>
         </div>
+        <!-- Buscador de la barra de navegación-->
         <div class="container-fluid">
-            <form class="d-flex" role="search">
-                <input class="form-control me-auto" type="search" placeholder="Buscar" aria-label="Search">
+            <form class="d-flex" role="search" method="get" action="{% url 'apps.post:listar_post' %}">
+                <input class="form-control me-auto" type="search" placeholder="Buscar post por titulo"
+                    aria-label="Search" name="buscador">
                 <button class="btn btn-outline-secondary active" type="submit">Buscar</button>
             </form>
         </div>
 
-
+        <!-- Sección usuario logueado -->
         <div class="col-3 container-fluid d-flex justify-content-end">
             <ul class="navbar-nav">
                 {% if user.is_authenticated %}
@@ -71,8 +78,11 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
+                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:actualizar_usuario' user.pk %}">Modificar perfil</a>
+                        </li>
                         <li><a class="dropdown-item" href="{% url 'apps.usuarios:cerrar_sesion' %}">Cerrar Sesion</a>
                         </li>
+
                         {% else %}
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'apps.usuarios:registrar' %}">Registrarse</a>

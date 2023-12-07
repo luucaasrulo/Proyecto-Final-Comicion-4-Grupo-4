@@ -84,9 +84,10 @@
                             class="rounded-circle flex-shrink-0">
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:actualizar_usuario' user.pk %}"><img src="{{user.imagen.url}}" alt="perfil" width="40" height="auto"
+                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:perfil' user.pk %}"><img src="{{user.imagen.url}}" alt="perfil" width="40" height="auto"
                             class="rounded-circle flex-shrink-0">{{user.username}}</a></li>
                         <li>
+                            <li>
                             <hr class="dropdown-divider">
                         </li>
                         </li>

@@ -30,3 +30,91 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 17rem;
+    background-color: #212529;
+    border-radius: 0 0 20px 20px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-imagen {
+    display: flex;
+    width: 280px;
+    height: 280px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: -30px;
+    left: calc(50% - 140px);
+    z-index: 1;
+}
+.seccion-perfil-usuario .perfil-usuario-imagen img {
+    width: 100%;
+    position: relative;
+    border-radius: 50%;
+}
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-username {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 4rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+}
+.seccion-perfil-usuario .perfil-usuario-username {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .lista-datos {
+    width: 100%;
+    list-style: none;
+    color: #212529;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+    padding: 5px 0;
+}
+.seccion-perfil-usuario .lista-datos li>.icono {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 2.75em;
+    margin-bottom: 0.5rem;
+    color: #212529;
+}
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+    color: #848484;
+    font-size: 0.95em;
+}
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    cursor: pointer;
+}

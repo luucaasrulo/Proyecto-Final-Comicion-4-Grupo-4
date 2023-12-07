@@ -68,7 +68,6 @@
         </div>
     </div>
     {% endfor %}
-    {% include 'post/paginador.html' %}
 </div>
 {%else%}
 <div class="container-fluid" style="margin-top:2%">
@@ -77,4 +76,5 @@
     </h5>
 </div>
 {% endif %}
+{% include 'post/paginador.html' %}
 {% endblock %}

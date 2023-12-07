@@ -6,39 +6,50 @@
 {% endblock %}
 
 {% block contenido %}
+
 <section data-bs-version="5.1" class="team2 cid-tffTM7TT6b">
-    <h2 style="text-align:center; margin-top: 8%;"><strong>Usuarios:</strong></h2>
+    <h2 style="text-align:center; margin-top: 2%;"><strong>Usuarios:</strong></h2>
     <div class="container">
-        {% for item in usuarios %}
-        {% if user.es_colaborador %}
-        <a class="btn btn-primary" style="width: 100%;"
-            href="{% url 'apps.usuarios:eliminar_usuario' item.pk %}">Eliminar usuario:{{item.username}}</a>
-        {% endif %}
-        <div class="card">
-            <div class="card-wrapper">
-                <div class="row align-items-center">
-                    <div class="col-12 col-md-4">
-                        <div class="image-wrapper">
-                            <img src="{{ item.imagen.url }}" class="d-block w-50">
-                        </div>
-                    </div>
-                    <div class="col-12 col-md">
-                        <div class="card-box">
-                            <h6>
-                                <strong>Nombre: {{ item.nombre }}</strong>
-                            </h6>
-                            <h6>
-                                <strong>Apellido: {{ item.apellido }}</strong>
-                            </h6>
-                            <p>
-                                <i>Email: {{ item.email }}</i>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {% endfor %}
+        <table class="table table-striped">
+            <thead>
+                <tr style="text-align: center;">
+                    <th scope="col">#</th>
+                    <th scope="col"></th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Fecha de Nacimiento</th>
+                    <th scope="col">Colaborador</th>
+                    <th scope="col">Fecha de Registro</th>
+                </tr>
+            </thead>
+            {% for item in usuarios %}
+            <tbody style="text-align: center;">
+                <tr>
+                    <th scope="row">{{item.pk}}</th>
+                    <td><img src="{{item.imagen.url}}" alt="perfil" width="40" height="auto" class="rounded-circle flex-shrink-0"></td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.fecha_nacimiento}}</td>
+                    <td>{{item.es_colaborador}}</td>
+                    <td>{{item.date_joined}}</td>
+                    {% if item.is_superuser %}
+                    {% else %}
+                    <td><a href="{% url 'apps.usuarios:eliminar_usuario' item.pk %}" class="btn btn-outline-dark"
+                        style="font-size: small;">Eliminar</a></td>
+                    {% endif %} 
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
     </div>
 </section>
 {% endblock %}
+
+
+
+
+

@@ -1,14 +1,11 @@
-/*
 body {
-    background: #0f0c29;
-    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
-    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
-}
-*/
-body {
+    background: #141E30;
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);
+    background: linear-gradient(to right, #243B55, #141E30);
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* Al menos el 100% de la altura visible del viewport */
+    min-height: 100vh;
+    /* Al menos el 100% de la altura visible del viewport */
     display: flex;
     flex-direction: column;
     color: white;
@@ -22,7 +19,8 @@ header {
 
 main {
     /* Estilos para el contenido principal */
-    flex: 1; /* Hace que este elemento ocupe el espacio restante */
+    flex: 1;
+    /* Hace que este elemento ocupe el espacio restante */
     padding: 20px;
 }
 

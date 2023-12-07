@@ -107,7 +107,7 @@ def ordenar_por(request):
         post = Post.objects.order_by('titulo')
     else:
         post = Post.objects.all()
-    template_name = 'discos/listar_discos.html'
+    template_name = 'post/listar_post.html'
     contexto = {
         'post' : post
     }

@@ -16,7 +16,7 @@ class RegristrarUsuario(CreateView):
 class ActualizarUsuario(LoginRequiredMixin,UpdateView):
     model = Usuarios
     fields= ['nombre','apellido','email','fecha_nacimiento', 'imagen']
-    template_name = 'usuarios/registrar_usuarios.html'
+    template_name = 'usuarios/registrar_usuario.html'
     success_url = reverse_lazy('apps.usuarios:listar_usuarios')
 
 class EliminarUsuario(LoginRequiredMixin,DeleteView):

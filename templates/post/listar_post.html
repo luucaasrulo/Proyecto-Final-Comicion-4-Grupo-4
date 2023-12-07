@@ -6,12 +6,39 @@
 {% endblock %}
 
 {% block contenido %}
-{% if post %}
+
+<!-- Agrega botones de ordenar post por fecha y por titulo-->
+<div class="container-fluid d-flex justify-content-center">
+<form method="GET" action="{% url 'apps.post:ordenar_por' %}">
+    <button class="btn btn-primary" name="orden" type="submit" value="fecha" style="margin-top: 25px;">Ordenar por
+        fecha</button>
+    <button class="btn btn-primary" name="orden" type="submit" value="titulo" style="margin-top: 25px;">Ordenar por
+        título</button>
+    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+        style="margin-top: 25px;">
+        Seleccionar Categoria
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
+        {% for i in categorias %}
+        <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</form>
+</div>
+
+<!-- Agrega el titulo a la página-->
+
 <div class="container-fluid" style="margin-top:2%">
-    <h3 clsss="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center;">
+    <h3 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center;">
         <strong>HERRAMIENTAS INFORMATICAS</strong>
     </h3>
 </div>
+
+<!-- Agrega los post en forma de cards -->
+
+{% if post %}
 <div class="row gap-3 container mx-auto p-2" style="margin-bottom: 2%;">
     {% for p in post %}
     <div class="row col-md-4 sm-3">
@@ -35,13 +62,19 @@
                 <li class="list-group-item">Categoria: {{p.categoria}}</li>
             </ul>
 
-            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-outline-dark" style="font-size: small;">Leer
+            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-outline-dark"
+                style="font-size: small;">Leer
                 mas</a>
         </div>
     </div>
-    {% empty %}
-    <h1>No hay post cargados todavia</h1>
     {% endfor %}
+    {% include 'post/paginador.html' %}
+</div>
+{%else%}
+<div class="container-fluid" style="margin-top:2%">
+    <h5 clsss="mbr-fonts-style aling-center" style="text-align:center;">
+        No hay post cargados para esa categoria
+    </h5>
 </div>
 {% endif %}
 {% endblock %}

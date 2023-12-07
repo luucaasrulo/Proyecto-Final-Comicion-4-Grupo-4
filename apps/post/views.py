@@ -1,5 +1,5 @@
-
 from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -38,12 +38,21 @@ class ListarPost(ListView):
     model= Post
     template_name = 'post/listar_post.html'
     context_object_name = 'post'
+    paginate_by = 3
 
     def get_context_data(self):
         context = super().get_context_data()
         categorias = Categoria.objects.all()
         context['categorias'] = categorias
         return context
+    
+    def get_queryset(self):
+        query = self.request.GET.get('buscador')
+        queryset = super().get_queryset()
+
+        if query:
+            queryset = queryset.filter(titulo__icontains = query)
+        return queryset.order_by('titulo')
 
 class EliminarPost(DeleteView):
     model = Post
@@ -90,3 +99,16 @@ def listar_por_categoria(request, categoria):
     }
     return render(request,template_name,contexto)
 
+def ordenar_por(request):
+    orden = request.GET.get('orden', '')
+    if orden == 'fecha':
+        post = Post.objects.order_by('fecha_post')
+    elif orden == 'titulo':
+        post = Post.objects.order_by('titulo')
+    else:
+        post = Post.objects.all()
+    template_name = 'discos/listar_discos.html'
+    contexto = {
+        'post' : post
+    }
+    return render(request, template_name, contexto)

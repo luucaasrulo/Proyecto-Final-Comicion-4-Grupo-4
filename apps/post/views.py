@@ -31,7 +31,7 @@ class AgregarPost(CreateView):
 class ModificarPost(UpdateView):
     model = Post
     fields = ['titulo','resumen','contenido','categoria','imagen']
-    template_name = 'post/agregar_post.html'
+    template_name = 'post/modificar_post.html'
     success_url = reverse_lazy('inicio')  
 
 class ListarPost(ListView):

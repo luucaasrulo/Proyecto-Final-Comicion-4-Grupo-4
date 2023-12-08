@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+    <title>Modificar Usuario</title>
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% block contenido %}
+<form enctype="multipart/form-data" method="post">{% csrf_token %}
+    <div>
+            {{form.as_p}}
+    </div>
+        <input type="submit" value="Modificar Categoria" class="btn btn-success mt-4"> 
+</form>
+{% endblock %}

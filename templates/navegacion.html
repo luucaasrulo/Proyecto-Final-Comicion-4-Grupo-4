@@ -19,6 +19,9 @@
         <div class="container-fluid d-flex justify-content-center">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'inicio' %}">Inicio</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'apps.post:listar_post' %}">Post</a>
                 </li>
                 <li class="nav-item">
@@ -57,7 +60,7 @@
                             <a class="nav-link" href="{% url 'apps.post:agregar_categoria' %}">Agregar Categoria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'apps.usuarios:listar_usuarios' %}">Listar usuarios</a>
+                            <a class="nav-link" href="{% url 'apps.usuarios:listar_usuarios' %}">Listar Usuarios</a>
                         </li>
                     </ul>
                   </li> 
@@ -91,7 +94,7 @@
                             <hr class="dropdown-divider">
                         </li>
                         </li>
-                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:actualizar_usuario' user.pk %}">Modificar perfil</a>
+                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:actualizar_usuario' user.pk %}">Editar Perfil</a>
                         </li>
                         </li>
                         <li><a class="dropdown-item" href="{% url 'apps.usuarios:cerrar_sesion' %}">Cerrar Sesion</a>

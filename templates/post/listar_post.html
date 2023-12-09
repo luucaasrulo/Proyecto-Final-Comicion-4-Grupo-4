@@ -7,9 +7,17 @@
 
 {% block contenido %}
 
+<!-- Agrega el titulo a la página-->
+
+<div class="container-fluid" style="margin-top:0%">
+    <h3 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center; font-size: 30px;">
+        <strong>HERRAMIENTAS INFORMATICAS</strong>
+    </h3>
+</div>
+
 <!-- Agrega botones de ordenar post por fecha y por titulo-->
 <div class="container-fluid d-flex justify-content-center">
-<form method="GET" action="{% url 'apps.post:ordenar_por' %}">
+<form method="get" action="{% url 'apps.post:ordenar_por' %}">
     <button class="btn btn-primary" name="orden" type="submit" value="fecha" style="margin-top: 25px;">Ordenar por
         fecha</button>
     <button class="btn btn-primary" name="orden" type="submit" value="titulo" style="margin-top: 25px;">Ordenar por
@@ -28,13 +36,6 @@
 </form>
 </div>
 
-<!-- Agrega el titulo a la página-->
-
-<div class="container-fluid" style="margin-top:2%">
-    <h3 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center;">
-        <strong>HERRAMIENTAS INFORMATICAS</strong>
-    </h3>
-</div>
 
 <!-- Agrega los post en forma de cards -->
 

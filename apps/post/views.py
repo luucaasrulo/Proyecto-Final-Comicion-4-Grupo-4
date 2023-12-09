@@ -59,11 +59,6 @@ class EliminarPost(DeleteView):
     template_name = 'post/confirmar_eliminar.html'
     success_url = reverse_lazy('inicio')
 
-# class ContenidoPost(DetailView):
-#     model = Post
-#     template_name = 'post/contenido_post.html'
-#     context_object_name = 'post'
-
 def contenido_post(request,id):
     post = Post.objects.get(id=id)
     comentarios = Comentario.objects.filter(post=id)

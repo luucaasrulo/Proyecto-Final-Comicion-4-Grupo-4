@@ -3,13 +3,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from apps.post.views import listar_primeros_post
 
 from .views import *
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",index, name='inicio'),
+    path('', listar_primeros_post, name='inicio'),
     path('contacto/',contacto, name='contacto'),
     path('acerca/',acerca, name='acerca'),
     path('usuarios/', include('apps.usuarios.urls')),

@@ -1,10 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block titulo %}
 <title>Herramientas informaticas</title>
 {% endblock %}
 
 {% block contenido %}
-<p>hola desde el index</p>
-<p>{{nombre}}</p>
+<div class="container-fluid" style="margin-top:2%">
+    <h2 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center; font-size:30px;">
+        <strong>HERRAMIENTAS INFORMATICAS</strong>
+    </h2>
+</div>
+{% if post %}
+<div class="row gap-3 container mx-auto p-2" style="margin-bottom: 2%;"></div>
+{% for p in post %}
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            <div class="post-preview">
+                <a href="post.html">
+                    <h2 class="post-title">{{p.titulo}}</h2>
+                    <h3 class="post-subtitle">{{p.resumen}}</h3>
+                </a>
+                <p class="post-meta">
+                    <a class="mbr-timeline-date text-body-secondary">Autor: <i>{{p.colaborador}} | </i></a> 
+                    <a class="mbr-timeline-date text-body-secondary">Posteado el dia: <i>{{p.fecha_post}}</i></a>
+                </p>
+            </div>
+            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-outline-dark"
+                style="font-size: small;">Leer mas</a>
+            <!-- Divider-->
+            <hr class="my-4" />
+        </div>
+    </div>
+    
+</div>
+{% endfor %}
+</div>
+{% endif %}
+<div class="container-fluid d-flex justify-content-center"> 
+<a href="{% url 'apps.post:listar_post' %}" class="btn btn-primary">Ver mas posteos</a>
+</div>
 {% endblock %}

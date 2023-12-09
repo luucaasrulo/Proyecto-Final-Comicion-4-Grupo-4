@@ -112,3 +112,11 @@ def ordenar_por(request):
         'post' : post
     }
     return render(request, template_name, contexto)
+
+def listar_primeros_post(request):
+        post = Post.objects.all()[:2]
+        template_name = 'index.html'
+        contexto = {
+            "post" : post
+        }
+        return render(request, template_name, contexto)  

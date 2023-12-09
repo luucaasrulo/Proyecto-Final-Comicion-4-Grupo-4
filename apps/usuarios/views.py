@@ -25,7 +25,7 @@ class EliminarUsuario(LoginRequiredMixin,DeleteView):
     success_url = reverse_lazy('apps.usuarios:listar_usuarios')
 
 def listar_usuarios(request):
-    usuarios = Usuarios.objects.all()
+    usuarios = Usuarios.objects.all().exclude(is_superuser = 1)
     template_name = 'usuarios/listar_usuarios.html'
     contexto = {
         "usuarios" : usuarios

@@ -1,6 +1,5 @@
 /* @extend display-flex; */
 input,
-select,
 textarea {
   outline: none;
   appearance: unset !important;
@@ -282,6 +281,15 @@ label {
 
 body {
   overflow-x: hidden;
+}
+textarea {
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
 /*# sourceMappingURL=style.css.map */

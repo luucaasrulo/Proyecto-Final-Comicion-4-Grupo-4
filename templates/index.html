@@ -15,11 +15,11 @@
     {% if post %}
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active"
                 aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1"
                 aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2"
                 aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
@@ -27,7 +27,7 @@
             <div class="carousel-item active">
                 <div class="card text-bg-dark data-bs-interval="5000"">
                     <img src="{{p.imagen.url}}" class="card-img" alt="{{p.titulo}}">
-                    <div class="card-img-overlay " style=" margin-top: 2%;  margin-bottom: 3%; margin-left: 150px; margin-right: 50%; backdrop-filter: blur(10px);
+                    <div class="card-img-overlay " style=" margin-top: 2%;  margin-bottom: 3%; margin-left: 150px; margin-right: 50%; backdrop-filter: blur(7s0px);
                             border: 2px solid rgba(255, 255, 255, .5); border-radius: 10px; 
                             box-shadow: 0 0 10px rgba(0, 0, 0, .9); text-shadow: 0 0 50px rgba(0, 0, 0, .9999);">
                         <div class="card-body "  >

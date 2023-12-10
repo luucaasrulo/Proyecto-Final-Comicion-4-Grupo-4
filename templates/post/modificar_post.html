@@ -2,15 +2,79 @@
 {% load static %}
 
 {% block titulo %}
-    <title>Modificar Usuario</title>
+<title>Modificar Usuario</title>
 {% endblock %}
 {% block css %}
+<link rel='stylesheet' href='{% static "css/registro.css" %}'>
 {% endblock %}
 {% block contenido %}
-<form enctype="multipart/form-data" method="post">{% csrf_token %}
-    <div>
-            {{form.as_p}}
+<div class="container">
+    <div class="row formulario">
+        <div class="col-md-8 offset-md-2">
+            <div class="signup-form">
+                <h2 class="form-title">Modificar un Post</h2>
+                <form enctype="multipart/form-data" method="post">{% csrf_token %}
+                    <div>
+                        <div class="form-group">
+                            <label for="id_nombre"><i class="fa-solid fa-heading"></i></i></label>
+                            {{form.titulo}}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_nombre"><i class="fa-solid fa-clipboard-list"></i></i></i></label>
+                            {{form.resumen}}
+                        </div>
+                        <div class="form-group">
+                            {{form.contenido}}
+                        </div>
+                        <div class="form-group">
+                            <span class="helptext">Categoria: </span>
+                            {{form.categoria}}
+                        </div>
+                        <div class="form-group">
+                            Actualmente: <a
+                                href="/media/post/imagen_programacion_nKURuMY.jpg">post/imagen_programacion_nKURuMY.jpg</a>
+                            <p>Modificar imagen:
+                            <input type="file" name="imagen" accept="image/*" id="id_imagen" placeholder="Imagen"
+                            class="m-0 p-0"></p>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                    data-bs-target="#Guardar">Añadir Post</button>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal" id="Guardar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Post Modificado</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Cerrar"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-dark bg-white">Su post fue registrado con exito</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cerrar</button>
+                                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </div>
-        <input type="submit" value="Modificar Categoria" class="btn btn-success mt-4"> 
+</div>
 </form>
+<script>
+    document.getElementById("id_titulo").placeholder = "Titulo";
+    document.getElementById("id_resumen").placeholder = "Resumen";
+    document.getElementById("id_contenido").placeholder = "Contenido";
+    document.getElementById("id_categoria").placeholder = "Categoria";
+    document.getElementById("id_imagen").placeholder = "Imagen";
+</script>
 {% endblock %}

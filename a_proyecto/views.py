@@ -7,8 +7,7 @@ from django.shortcuts import render
 
 def contacto(request):
     template_name = 'contacto.html'
-    nombres = ['Carlos','Ian','Lucas']
-    context = {'nombres': nombres}
+    context = {}
     return render(request,template_name,context)
 
 def acerca(request):

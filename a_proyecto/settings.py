@@ -18,6 +18,7 @@ AUTH_USER_MODEL = 'usuarios.Usuarios'
 LOGIN_URL = reverse_lazy('apps.usuarios:iniciar_sesion')
 LOGIN_REDIRECT_URL = reverse_lazy('inicio')
 LOGOUT_REDIRECT_URL = reverse_lazy('inicio')
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 #------------------------------------------------------------------------------------------------
 # Application definition
 INSTALLED_APPS = [

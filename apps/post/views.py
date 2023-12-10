@@ -30,7 +30,7 @@ class AgregarPost(CreateView):
 
 class ModificarPost(UpdateView):
     model = Post
-    fields = ['titulo','resumen','contenido','categoria','imagen']
+    fields = ['titulo','resumen','contenido','categoria', 'imagen']
     template_name = 'post/modificar_post.html'
     success_url = reverse_lazy('inicio')  
 
@@ -52,17 +52,12 @@ class ListarPost(ListView):
 
         if query:
             queryset = queryset.filter(titulo__icontains = query)
-        return queryset.order_by('titulo')
+        return queryset.order_by('-fecha_post')
 
 class EliminarPost(DeleteView):
     model = Post
     template_name = 'post/confirmar_eliminar.html'
     success_url = reverse_lazy('inicio')
-
-# class ContenidoPost(DetailView):
-#     model = Post
-#     template_name = 'post/contenido_post.html'
-#     context_object_name = 'post'
 
 def contenido_post(request,id):
     post = Post.objects.get(id=id)
@@ -90,7 +85,7 @@ def contenido_post(request,id):
     
 def listar_por_categoria(request, categoria):
     categoria = Categoria.objects.filter(nombre = categoria)
-    post = Post.objects.filter(categoria = categoria[0].id).order_by('fecha_post')
+    post = Post.objects.filter(categoria = categoria[0].id).order_by('-fecha_post')
     categorias = Categoria.objects.all()
     template_name = 'post/listar_post.html'
     contexto = {
@@ -102,7 +97,7 @@ def listar_por_categoria(request, categoria):
 def ordenar_por(request):
     orden = request.GET.get('orden', '')
     if orden == 'fecha':
-        post = Post.objects.order_by('fecha_post')
+        post = Post.objects.order_by('-fecha_post')
     elif orden == 'titulo':
         post = Post.objects.order_by('titulo')
     else:

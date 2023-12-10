@@ -9,14 +9,14 @@ class Categoria(models.Model):
         return self.nombre
 
 class Post(models.Model):
-    titulo = models.CharField(max_length=20, null=False)
-    autor = models.CharField(max_length=20, null=False)
-    resumen = models.CharField(max_length=150, null=False)
+    titulo = models.CharField(max_length=30, null=False )
+    autor = models.CharField(max_length=20, null=True)
+    resumen = models.CharField(max_length=90, null=False)
     contenido = models.TextField()
     fecha_post = models.DateTimeField(auto_now_add=True)
-    colaborador = models.ForeignKey(Usuarios, on_delete=models.SET_NULL, null=True,default=2)
+    colaborador = models.ForeignKey(Usuarios, on_delete=models.SET_NULL, null=True, default=2)
     categoria = models.ForeignKey(Categoria, on_delete=models.SET_NULL, null=True)
-    imagen = models.ImageField(null=True,blank=True,upload_to='post',default='post/default2.png')
+    imagen = models.ImageField(null=True,blank=True,upload_to='post',default='post/default2.png', help_text="imagen 16:9 ó 370x140px")
 
     def __str__(self):
         return self.titulo

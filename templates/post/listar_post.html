@@ -10,30 +10,51 @@
 <!-- Agrega el titulo a la página-->
 
 <div class="container-fluid" style="margin-top:0%">
-    <h3 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center; font-size: 30px;">
+    <h3 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2"
+        style="text-align:center; font-size: 30px;">
         <strong>HERRAMIENTAS INFORMATICAS</strong>
     </h3>
 </div>
 
 <!-- Agrega botones de ordenar post por fecha y por titulo-->
-<div class="container-fluid d-flex justify-content-center">
-<form method="get" action="{% url 'apps.post:ordenar_por' %}">
-    <button class="btn btn-primary" name="orden" type="submit" value="fecha" style="margin-top: 25px;">Ordenar por
-        fecha</button>
-    <button class="btn btn-primary" name="orden" type="submit" value="titulo" style="margin-top: 25px;">Ordenar por
-        título</button>
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-        style="margin-top: 25px;">
-        Seleccionar Categoria
-    </button>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
-        {% for i in categorias %}
-        <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</form>
+<div class="container d-flex justify-content-start">
+    <form class="btn-group" method="get" action="{% url 'apps.post:ordenar_por' %}">
+
+        <div class="dropdown-center dropdown" style="margin-right: 4px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Ordenar por
+                fecha
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <button class="dropdown-item" name="orden" type="submit" value="reciente">Mas reciente</button>
+                <button class="dropdown-item" name="orden" type="submit" value="antiguo">Mas Antigüo</button>
+            </ul>
+        </div>
+        <div class="dropdown-center dropdown" style="margin-right: 4px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Ordenar por Titulo
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <button class="dropdown-item" name="orden" type="submit" value="titulo(a-z)">Ordenar A-Z</button>
+                <button class="dropdown-item" name="orden" type="submit" value="titulo(z-a)">Ordenar Z-A</button>
+            </ul>
+        </div>
+        <div class="dropdown-center dropdown" style="margin-right: 4px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Seleccionar Categoria
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
+                {% for i in categorias %}
+                <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </form>
 </div>
 
 
@@ -64,7 +85,7 @@
             </ul>
 
             <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-outline-dark"
-                style="font-size: small;">Leer 
+                style="font-size: small;">Leer
                 mas</a>
         </div>
     </div>

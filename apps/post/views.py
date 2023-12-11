@@ -96,10 +96,14 @@ def listar_por_categoria(request, categoria):
 
 def ordenar_por(request):
     orden = request.GET.get('orden', '')
-    if orden == 'fecha':
+    if orden == 'reciente':
         post = Post.objects.order_by('-fecha_post')
-    elif orden == 'titulo':
+    elif orden == 'antiguo':
+        post = Post.objects.order_by('fecha_post')
+    elif orden == 'titulo(a-z)':
         post = Post.objects.order_by('titulo')
+    elif orden == 'titulo(z-a)':
+        post = Post.objects.order_by('-titulo')
     else:
         post = Post.objects.all()
     template_name = 'post/listar_post.html'

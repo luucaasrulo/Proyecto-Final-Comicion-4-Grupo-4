@@ -59,13 +59,13 @@
         <!-- Sección usuario logueado -->
         <div class="col-4 container-fluid d-flex  justify-content-end">
             <ul class="navbar-nav">
-                <i class="bi bi-moon-fill" style="color: aliceblue; margin-top: 8%; margin-right: 4px;"> Oscuro</i>
+                <i class="bi bi-sun-fill" style="color: aliceblue; margin-top: 8%; margin-right: 4px;"> Claro</i>
                 <label class="switch" style="margin-top: 8%; margin-right: 4px; " >
                     
                     <input type="checkbox" id="slider" checked>
                     <span class="slider"></span>
                 </label>
-                <i class="bi bi-sun-fill" style="color: aliceblue; margin-top: 8%; margin-right: 4px;"> Claro</i>
+                <i class="bi bi-moon-fill" style="color: aliceblue; margin-top: 8%; margin-right: 4px;"> Oscuro</i>
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"

@@ -94,7 +94,7 @@ def contenido_post(request,id):
     
 def listar_por_categoria(request, categoria):
     categoria = Categoria.objects.filter(nombre = categoria)
-    post = Post.objects.filter(categoria = categoria[0].id).order_by('fecha_post')
+    post = Post.objects.filter(categoria = categoria[0].id).order_by('-fecha_post')
     categorias = Categoria.objects.all()
     
     # Configurar la paginación con 3 posts por página
@@ -146,9 +146,11 @@ def ordenar_por(request):
     return render(request, template_name, contexto)
 
 def listar_primeros_post(request):
-        post = Post.objects.all()[:2]
+        post1 = Post.objects.all()[:1]
+        post = Post.objects.all()[1:3]
         template_name = 'index.html'
         contexto = {
-            "post" : post
+            "post" : post,
+            "post1" : post1,
         }
         return render(request, template_name, contexto)  

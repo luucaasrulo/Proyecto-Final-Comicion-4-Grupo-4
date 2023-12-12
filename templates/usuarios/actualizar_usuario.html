@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block titulo %}
-    <title>Registrar Usuario</title>
+<title>Registrar Usuario</title>
 {% endblock %}
 {% block css %}
-    <link rel='stylesheet' href='{% static "css/registro.css" %}'>
+<link rel='stylesheet' href='{% static "css/registro.css" %}'>
 {% endblock %}
 {% block contenido %}
 <section class="signup">
@@ -14,8 +14,9 @@
             <div class="col-md-8 offset-md-2">
                 <div class="signup-content">
                     <div class="signup-form">
-                        <h2 class="form-title">Editar Perfir</h2>
-                        <form enctype="multipart/form-data" action="" method="post" class="mi-formulario" id="formulario">
+                        <h2 class="form-title">Editar Perfil</h2>
+                        <form enctype="multipart/form-data" action="" method="post" class="mi-formulario"
+                            id="formulario">
                             {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6" id="form_nombre">
@@ -24,7 +25,8 @@
                                         {{ form.nombre }}
                                         <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
                                     </div>
-                                    <p class="formulario__input-error">Primera letra mayuscula y un minimo de 2 caracteres y un maximo de 20.</p>
+                                    <p class="formulario__input-error">Primera letra mayuscula y un minimo de 2
+                                        caracteres y un maximo de 20.</p>
                                 </div>
                                 <div class="col-md-6" id="form_apellido">
                                     <div class="form-group">
@@ -34,7 +36,8 @@
                                         {{ form.apellido }}
                                         <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
                                     </div>
-                                    <p class="formulario__input-error">Primera letra mayuscula y un minimo de 2 caracteres y un maximo de 20.</p>
+                                    <p class="formulario__input-error">Primera letra mayuscula y un minimo de 2
+                                        caracteres y un maximo de 20.</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -44,9 +47,7 @@
                                             <i class="fas fa-calendar"></i>
                                         </label>
                                         {{ form.fecha_nacimiento }}
-                                        <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
                                     </div>
-                                    <p class="formulario__input-error">Formato:DD-MM-YYYY</p>
                                 </div>
                                 <div class="col-md-6" id="form_username">
                                     <div class="form-group">
@@ -68,7 +69,8 @@
                                         {{ form.password1 }}
                                         <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
                                     </div>
-                                    <p class="formulario__input-error">Su contraseña no puede ser similar a otros componentes de su información personal,
+                                    <p class="formulario__input-error">Su contraseña no puede ser similar a otros
+                                        componentes de su información personal,
                                         debe contener por lo menos 8 caracteres, y al menos 1 caracter especial.</p>
                                 </div>
                                 <div class="col-md-6" id="form_password2">
@@ -90,10 +92,14 @@
                                 <i class="formulario__icon-error fa-solid fa-circle-xmark" id="icon"></i>
                             </div>
                             <div class="form-group">
-                                {{ form.imagen }}
+                                Actualmente: <a href="/media/usuarios/default1.png">usuarios/default1.png</a>
+                                <p>Modificar imagen:
+                                    <input class="m-0 p-0" type="file" name="imagen" accept="image/*" id="id_imagen">
+                                </p>
                             </div>
                             <div class="form-group form-button">
-                                <input type="submit" name="signup" id="signup" class="btn btn-success" value="Guardar Cambios">
+                                <input type="submit" name="signup" id="signup" class="btn btn-success"
+                                    value="Guardar Cambios">
                             </div>
                         </form>
                     </div>
@@ -102,5 +108,4 @@
         </div>
     </div>
 </section>
-<script src='{% static "js/registro.js" %}'></script>
 {% endblock %}

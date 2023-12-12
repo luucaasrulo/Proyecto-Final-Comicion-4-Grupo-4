@@ -30,7 +30,7 @@
         <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
             {% for i in categorias %}
-            <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a>
+            <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}} </a>
             </li>
             {% endfor %}
         </ul>
@@ -70,7 +70,7 @@
     </div>
     {% endfor %}
 
-    <!-- Agrega el paginador de la post/views.py para la clase ListarPost y las funciones ordenar_por y listar_por_categoria  -->
+    <!-- Agrega el paginador de la post/views.py para las funciones ordenar_por y listar_por_categoria  -->
 
     <nav style="margin-top: 0.1%;">
         <ul class="pagination pagination-circle mg-b-0 justify-content-center" >
@@ -97,7 +97,8 @@
 
         </ul>
     </nav>
-    {% include 'post/paginador.html' %}
+    <!-- trae el paginador (lo repite) que se usa con la clase ListarPost-->
+    {% include 'post/paginador.html' %} 
 </div>
 {%else%}
 <div class="container-fluid" style="margin-top:2%">

@@ -15,7 +15,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
     </div>
-    <div class="col-7 collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="col-6 collapse navbar-collapse" id="navbarSupportedContent">
         <div class="container-fluid d-flex justify-content-center">
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -57,8 +57,15 @@
         </div>
 
         <!-- Sección usuario logueado -->
-        <div class="col-3 container-fluid d-flex justify-content-end">
+        <div class="col-4 container-fluid d-flex  justify-content-end">
             <ul class="navbar-nav">
+                <i class="bi bi-moon-fill" style="color: aliceblue; margin-top: 8%; margin-right: 4px;"> Oscuro</i>
+                <label class="switch" style="margin-top: 8%; margin-right: 4px; " >
+                    
+                    <input type="checkbox" id="slider" checked>
+                    <span class="slider"></span>
+                </label>
+                <i class="bi bi-sun-fill" style="color: aliceblue; margin-top: 8%; margin-right: 4px;"> Claro</i>
                 {% if user.is_authenticated %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -94,3 +101,4 @@
         </div>
     </div>
 </nav>
+<script src='{% static "js/tema.js" %}'></script>

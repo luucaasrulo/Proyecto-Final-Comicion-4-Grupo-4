@@ -11,7 +11,7 @@
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Administrar el Post
     </button>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu dropdown-menu-dark">
         <li><a class="dropdown-item" href="{% url 'apps.post:modificar_post' post.pk %}">Modificar Posteo</a></li>
         <li><a class="dropdown-item" href="{% url 'apps.post:confirmar_eliminar' post.pk %}">Borrar Posteo</a></li>
     </ul>
@@ -22,7 +22,7 @@
         <div class="col-12 col-lg-6">
             <div class="image-wrapper">
                 <img src="{{ post.imagen.url }}" class="d-block w-100">
-                <p style="text-align: left; color: white;" class="mbr-timeline-date">Fecha de
+                <p style="text-align: left;" class="mbr-timeline-date">Fecha de
                         posteo: {{post.fecha_post}}</p>
                 <li class="list-group-item"><img src="{{post.colaborador.imagen.url}}" alt="perfil" width="40"
                         height="auto" class="rounded-circle flex-shrink-0"> {{post.colaborador}}

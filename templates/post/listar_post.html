@@ -64,7 +64,7 @@
 <div class="row gap-3 container mx-auto p-2" style="margin-bottom: 2%;">
     {% for p in post %}
     <div class="row col-md-4 sm-3">
-        <div class="card" style="text-align: center;">
+        <div class="card" style="text-align: center; box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
             <div class="card-img-top" style="display: block; width: 100%; margin: auto;">
                 <img src="{{ p.imagen.url }}" class="card-img-top w-5" alt="{{p.titulo}}">
             </div>
@@ -84,7 +84,7 @@
                 <li class="list-group-item">Categoria: {{p.categoria}}</li>
             </ul>
 
-            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-outline-dark"
+            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-secondary"
                 style="font-size: small;">Leer
                 mas</a>
         </div>

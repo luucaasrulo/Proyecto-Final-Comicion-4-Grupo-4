@@ -6,6 +6,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.urls import reverse_lazy, reverse
 
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+
 from .models import Categoria, Post
 from apps.comentarios.models import Comentario
 from apps.comentarios.forms import ComentarioForm
@@ -35,24 +37,31 @@ class ModificarPost(UpdateView):
     success_url = reverse_lazy('inicio')  
 
 class ListarPost(ListView):
-    model= Post
+    model = Post
     template_name = 'post/listar_post.html'
     context_object_name = 'post'
-    paginate_by = 3
+    paginate_by = 3  # Número de posts por página
 
-    def get_context_data(self):
-        context = super().get_context_data()
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         categorias = Categoria.objects.all()
         context['categorias'] = categorias
         return context
     
     def get_queryset(self):
         query = self.request.GET.get('buscador')
-        queryset = super().get_queryset()
+        orden = self.request.GET.get('orden', '')
+        queryset = Post.objects.all()
 
         if query:
-            queryset = queryset.filter(titulo__icontains = query)
-        return queryset.order_by('-fecha_post')
+            queryset = queryset.filter(titulo__icontains=query)
+
+        if orden == 'titulo':
+            queryset = queryset.order_by('titulo')
+        else:
+            queryset = queryset.order_by('-fecha_post')
+
+        return queryset
 
 class EliminarPost(DeleteView):
     model = Post
@@ -87,6 +96,20 @@ def listar_por_categoria(request, categoria):
     categoria = Categoria.objects.filter(nombre = categoria)
     post = Post.objects.filter(categoria = categoria[0].id).order_by('-fecha_post')
     categorias = Categoria.objects.all()
+    
+    # Configurar la paginación con 3 posts por página
+    paginator = Paginator(post, 3)
+    page = request.GET.get('page')
+
+    try:
+        post = paginator.page(page)
+    except PageNotAnInteger:
+        # Si la página no es un número entero, mostrar la primera página
+        post = paginator.page(1)
+    except EmptyPage:
+        # Si la página está fuera de rango (página 9999), mostrar la última página
+        post = paginator.page(paginator.num_pages)
+
     template_name = 'post/listar_post.html'
     contexto = {
         'post': post,
@@ -106,6 +129,20 @@ def ordenar_por(request):
         post = Post.objects.order_by('-titulo')
     else:
         post = Post.objects.all()
+
+    # Configurar la paginación con 3 posts por página
+    paginator = Paginator(post, 3)
+    page = request.GET.get('page')
+
+    try:
+        post = paginator.page(page)
+    except PageNotAnInteger:
+        # Si la página no es un número entero, mostrar la primera página
+        post = paginator.page(1)
+    except EmptyPage:
+        # Si la página está fuera de rango (página 9999), mostrar la última página
+        post = paginator.page(paginator.num_pages)
+
     template_name = 'post/listar_post.html'
     contexto = {
         'post' : post

@@ -57,11 +57,10 @@
     </form>
 </div>
 
-
 <!-- Agrega los post en forma de cards -->
 
 {% if post %}
-<div class="row gap-3 container mx-auto p-2" style="margin-bottom: 2%;">
+<div class="row gap-3 container mx-auto p-2" style="margin-bottom: 1%;">
     {% for p in post %}
     <div class="row col-md-4 sm-3">
         <div class="card" style="text-align: center; box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
@@ -90,6 +89,36 @@
         </div>
     </div>
     {% endfor %}
+
+    <!-- Agrega el paginador de la post/views.py para las funciones ordenar_por y listar_por_categoria  -->
+
+    <nav style="margin-top: 0.1%;">
+        <ul class="pagination pagination-circle mg-b-0 justify-content-center" >
+
+            {% if post.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo; Primera</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ post.previous_page_number }}">Anterior</a></li>
+            {% endif %}
+
+
+            {% for i in post.paginator.page_range %}
+            {% if post.number|add:'-1' <= i and post.number|add:'1' >= i %}
+            <li class="page-item {% if post.number == i %}active{% endif %}">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+            {%endif%}
+            {% endfor %}
+
+            {% if post.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ post.next_page_number }}">Siguiente</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ post.paginator.num_pages }}">Ultima
+                    &raquo;</a></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+    <!-- trae el paginador (lo repite) que se usa con la clase ListarPost-->
+    {% include 'post/paginador.html' %} 
 </div>
 {%else%}
 <div class="container-fluid" style="margin-top:2%">
@@ -98,5 +127,5 @@
     </h5>
 </div>
 {% endif %}
-{% include 'post/paginador.html' %}
+
 {% endblock %}

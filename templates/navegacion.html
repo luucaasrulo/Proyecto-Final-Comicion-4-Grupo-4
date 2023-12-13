@@ -161,7 +161,9 @@
                     <a class="nav-link" href="{% url 'apps.usuarios:registrar' %}">Registrarse</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'apps.usuarios:iniciar_sesion' %}">Iniciar Sesion</a>
+                    <a class="nav-link" href="" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        Iniciar Sesión
+                    </a>
                 </li>
                 {% endif %}
             </ul>
@@ -170,4 +172,5 @@
         </div>
     </div>
 </nav>
+{% include 'usuarios/iniciar_sesionmodal.html' %}
 <script src='{% static "js/tema.js" %}'></script>

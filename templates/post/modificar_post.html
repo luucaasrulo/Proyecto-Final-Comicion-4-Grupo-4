@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block titulo %}
-<title>Modificar Usuario</title>
+<title>Modificar Post</title>
 {% endblock %}
 {% block css %}
 <link rel='stylesheet' href='{% static "css/registro.css" %}'>
@@ -12,7 +12,7 @@
     <div class="row formulario">
         <div class="col-md-8 offset-md-2">
             <div class="signup-form">
-                <h2 class="form-title">Modificar un Post</h2>
+                <h2 class="form-title">Modificar Post</h2>
                 <form enctype="multipart/form-data" method="post">{% csrf_token %}
                     <div>
                         <div class="form-group">
@@ -30,12 +30,26 @@
                             <span class="helptext">Categoria: </span>
                             {{form.categoria}}
                         </div>
+
                         <div class="form-group">
-                            Actualmente: <a
-                                href="/media/post/imagen_programacion_nKURuMY.jpg">post/imagen_programacion_nKURuMY.jpg</a>
+                            <div class="form-check">
+                                <label class="form-check-label" for="id_activo">
+                                    Activo
+                                </label>
+                                <input class="form-check-input" name="activo" type="checkbox" id="id_activo" checked="">
+                                {{form.activo.value}} {{form.activo}}
+                            </div>
+
+                        <div class="form-group">
+                            <p> <i class="fa-solid fa-image"></i>Imagen actual: {{ post.imagen.name }}</p>
+                            <div class="container">
+                                <img src="{{ post.imagen.url }}" style="max-width: 200px; height: auto;" ;
+                                    alt="{{ post.titulo }}">
+                            </div>
                             <p>Modificar imagen:
-                            <input type="file" name="imagen" accept="imagen/*" id="id_imagen" placeholder="Imagen"
-                            class="m-0 p-0"></p>
+                                <input type="file" name="imagen" accept="imagen/*" id="id_imagen" placeholder="Imagen"
+                                    class="m-0 p-0">
+                            </p>
                         </div>
                         <div class="row">
                             <div class="col-md-12 text-center">
@@ -43,6 +57,7 @@
                                     data-bs-target="#Guardar">Aplicar Cambios</button>
                             </div>
                         </div>
+
                         <!-- Modal -->
                         <div class="modal" id="Guardar" tabindex="-1" aria-labelledby="exampleModalLabel"
                             aria-hidden="true">
@@ -65,15 +80,17 @@
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+</div>
 <script>
     document.getElementById("id_titulo").placeholder = "Titulo";
     document.getElementById("id_resumen").placeholder = "Resumen";
     document.getElementById("id_contenido").placeholder = "Contenido";
     document.getElementById("id_categoria").placeholder = "Categoria";
+    document.getElementById("id_activo").placeholder = "Activo";
     document.getElementById("id_imagen").placeholder = "Imagen";
 </script>
 {% endblock %}

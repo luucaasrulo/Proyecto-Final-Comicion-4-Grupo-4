@@ -22,11 +22,11 @@
                 <form enctype="multipart/form-data" method="post">{% csrf_token %}
                     <div>
                         <div class="form-group">
-                            <label for="id_nombre"><i class="fa-solid fa-heading"></i></i></label>
+                            <label for="id_nombre"><i class="fa-solid fa-heading"></i></label>
                             {{form.titulo}}
                         </div>
                         <div class="form-group">
-                            <label for="id_nombre"><i class="fa-solid fa-clipboard-list"></i></i></i></label>
+                            <label for="id_nombre"><i class="fa-solid fa-clipboard-list"></i></label>
                             {{form.resumen}}
                         </div>
                         <div class="form-group">
@@ -34,52 +34,58 @@
                         </div>
                         <div class="form-group">
                             <span class="helptext">Categoria: </span>
-                            {{form.categoria}} 
-                        </div>
-                        <div class="form-group">
-                            <label for="id_nombre"><i class="fa-solid fa-image"></i></i></i></label>
-                            {{form.imagen}}
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 text-center">
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal"
-                                    data-bs-target="#Guardar">Añadir Post</button>
+                            {{form.categoria}}
+                            <div class="form-group">
+                                <span class="helptext">Activo: </span>
+                                {{form.activo}}
                             </div>
-                        </div>
-                        <!-- Modal -->
-                        <div class="modal" id="Guardar" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Post Modificado</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Cerrar"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p class="text-dark bg-white">Su post fue registrado con exito</p>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <div class="form-group">
+                                <label for="id_nombre"><i class="fa-solid fa-image"></i></label>
+                                {{form.imagen}}
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                                        data-bs-target="#Guardar">Añadir Post</button>
+                                </div>
+                            </div>
+                            <!-- Modal -->
+                            <div class="modal" id="Guardar" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Post Modificado</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Cerrar"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-dark bg-white">Su post fue registrado con exito</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cerrar</button>
+                                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-</form>
 <script>
     document.getElementById("id_titulo").placeholder = "Titulo";
     document.getElementById("id_resumen").placeholder = "Resumen";
     document.getElementById("id_contenido").placeholder = "Contenido";
     document.getElementById("id_categoria").placeholder = "Categoria";
+    document.getElementById("id_activo").placeholder = "Activo";
     document.getElementById("id_imagen").placeholder = "Imagen";
 </script>
+<!-- Inicializa CKEditor en el campo contenido -->
 <script>
     ClassicEditor
         .create(document.querySelector('.ckeditor'))
@@ -87,5 +93,5 @@
             console.error(error);
         });
 </script>
-<!-- Inicializa CKEditor en el campo textarea -->
+
 {% endblock %}

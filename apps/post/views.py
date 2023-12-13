@@ -22,7 +22,7 @@ class AgregarCatergoria(CreateView):
 
 class AgregarPost(CreateView):
     model = Post
-    fields = ['titulo','resumen','contenido','categoria','imagen']
+    fields = ['titulo','resumen','contenido','categoria', 'activo','imagen']
     template_name = 'post/agregar_post.html'
     success_url = reverse_lazy('inicio')
 
@@ -32,9 +32,9 @@ class AgregarPost(CreateView):
 
 class ModificarPost(UpdateView):
     model = Post
-    fields = ['titulo','resumen','contenido','categoria', 'imagen']
+    fields = ['titulo','resumen','contenido','categoria', 'activo', 'imagen']
     template_name = 'post/modificar_post.html'
-    success_url = reverse_lazy('inicio')  
+    success_url = reverse_lazy('inicio')
 
 class ListarPost(ListView):
     model = Post
@@ -51,7 +51,13 @@ class ListarPost(ListView):
     def get_queryset(self):
         query = self.request.GET.get('buscador')
         orden = self.request.GET.get('orden', '')
+        user = self.request.user
         queryset = Post.objects.all()
+
+        if user.is_authenticated and user.es_colaborador:
+            pass
+        else:
+            queryset = queryset.filter(activo=True)
 
         if query:
             queryset = queryset.filter(titulo__icontains=query)

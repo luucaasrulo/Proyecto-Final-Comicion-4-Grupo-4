@@ -11,7 +11,7 @@ class Categoria(models.Model):
 
 class Post(models.Model):
     titulo = models.CharField(max_length=30, null=False )
-    autor = models.CharField(max_length=20, null=True)
+    autor = models.CharField(max_length=20, null=True, default="desconocido")
     resumen = models.CharField(max_length=90, null=False)
     contenido = RichTextField()
     activo = models.BooleanField(default=True)

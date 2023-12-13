@@ -42,7 +42,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'acerca' %}">Acerca de</a>
                 </li>
-                {% if user.es_colaborador %}
+                {% if user.es_colaborador or user.is_superuser %}
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">

@@ -11,10 +11,10 @@
         <div class="list-group-item gap-3 py-3" aria-current="true">
             <form method="POST">{%csrf_token%}
                 <p>Seguro que desea eliminar la opinion?</p>
-                <input class="btn btn-outline-secondary" type="submit" value="Si, eliminar" />
+                <input class="btn btn-outline-danger" type="submit" value="Si, eliminar" />
             </form>
-            <a href="{% url 'apps.post:contenido_post' comentario.post.id %}" class="btn btn-primary"
-                style="font-size: small;">No, volver.</a>
+            <a href="{% url 'apps.post:contenido_post' comentario.post.id %}" class="btn btn-secondary"
+                style="font-size: small;">No, volver</a>
         </div>
     </div>
 </div>

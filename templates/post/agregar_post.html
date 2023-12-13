@@ -9,6 +9,10 @@
 <link rel='stylesheet' href='{% static "css/registro.css" %}'>
 {% endblock %}
 
+{% block ckeditor%}
+<script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
+{% endblock %}
+
 {% block contenido %}
 <div class="container">
     <div class="row formulario">
@@ -76,4 +80,12 @@
     document.getElementById("id_categoria").placeholder = "Categoria";
     document.getElementById("id_imagen").placeholder = "Imagen";
 </script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('.ckeditor'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<!-- Inicializa CKEditor en el campo textarea -->
 {% endblock %}

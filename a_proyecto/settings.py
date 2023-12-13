@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'apps.usuarios',
     'apps.post',
     'apps.comentarios',
+    'ckeditor',
 ]
 #------------------------------------------------------------------------------------------------
 MIDDLEWARE = [

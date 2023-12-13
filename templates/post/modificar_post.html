@@ -32,13 +32,9 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="form-check">
-                                <label class="form-check-label" for="id_activo">
-                                    Activo
-                                </label>
-                                <input class="form-check-input" name="activo" type="checkbox" id="id_activo" checked="">
-                                {{form.activo.value}} {{form.activo}}
-                            </div>
+                            <span class="helptext">Activo: </span>
+                                 {{form.activo}}                              
+                        </div>
 
                         <div class="form-group">
                             <p> <i class="fa-solid fa-image"></i>Imagen actual: {{ post.imagen.name }}</p>

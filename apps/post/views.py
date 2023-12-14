@@ -68,10 +68,13 @@ class EliminarPost(DeleteView):
     template_name = 'post/confirmar_eliminar.html'
     success_url = reverse_lazy('inicio')
 
-def contenido_post(request,id):
+def contenido_post(request, id):
     post = Post.objects.get(id=id)
     comentarios = Comentario.objects.filter(post=id)
     form = ComentarioForm(request.POST)
+
+    # Aumentar el contador de visitas
+    post.aumentar_contador()
 
     if form.is_valid():
         if request.user.is_authenticated:
@@ -90,7 +93,7 @@ def contenido_post(request,id):
         'comentarios': comentarios
     }
     template_name = 'post/contenido_post.html'
-    return render(request,template_name,contexto)
+    return render(request, template_name, contexto)
     
 def listar_por_categoria(request, categoria):
     categoria = Categoria.objects.filter(nombre = categoria)

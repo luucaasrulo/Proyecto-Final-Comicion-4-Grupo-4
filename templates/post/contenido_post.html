@@ -38,10 +38,10 @@
         </div>
         {% for item in comentarios %}
         {% if user.is_authenticated and user.id == item.usuario.id%}
-        <div class="dropdown">
+        <div class="dropdown ">
             {% endif %}
-            <div class="row justify-content-md-center ">
-                <div class="col-md-6">
+            <div class="row justify-content-md-center " >
+                <div class="col-md-6" style="border: 2px solid rgb(0, 0, 0); border-radius: 10px; margin-top: 2px;">
                     <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
                         <img src="{{ item.usuario.imagen.url }}" style="width:10%; height: 10%;" alt="twbs" width="40"
                             height="40" class="rounded-circle flex-shrink-0">
@@ -52,6 +52,7 @@
                             </div>
                             <div class="col-4">
                                 <small class=" text-nowrap mb-0">{{ item.fecha }}</small>
+                                {% if user.es_colaborador or user.is_superuser or user.id == item.usuario.id%}
                                 <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Comentario
@@ -64,6 +65,7 @@
                                             href="{% url 'apps.comentarios:confirma_eliminar' item.pk %}">Borrar
                                             comentario</a></li>
                                 </ul>
+                                {% endif %}
                             </div>
 
                         </div>

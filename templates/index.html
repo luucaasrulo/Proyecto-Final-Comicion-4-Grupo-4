@@ -31,8 +31,8 @@
                             border: 2px solid rgba(255, 255, 255, .5); border-radius: 10px; 
                             box-shadow: 0 0 10px rgba(0, 0, 0, .9); text-shadow: 0 0 50px rgba(0, 0, 0, .9999);">
                         <div class="card-body "  >
-                            <h1 class="card-title ">{{p.titulo}}</h1>
-                            <p class="card-text fs-5 text-break" >{{p.resumen}}</p>
+                            <h1 class="card-title fs-4 fs-lg-3">{{ p.titulo }}</h1>
+                            <p class="card-text fs-6 fs-md-5 fs-lg-4 text-break">{{ p.resumen }}</p>
 
                         </div>
                         <div style=" margin-top: 2%;" class="row align-bottom">
@@ -59,8 +59,8 @@
                             border: 2px solid rgba(255, 255, 255, .5); border-radius: 10px; 
                             box-shadow: 0 0 10px rgba(0, 0, 0, .9); text-shadow: 0 0 50px rgba(0, 0, 0, .9999);">
                         <div class="card-body "  >
-                            <h1 class="card-title ">{{p.titulo}}</h1>
-                            <p class="card-text fs-5 text-break" >{{p.resumen}}</p>
+                            <h1 class="card-title fs-4 fs-lg-3">{{ p.titulo }}</h1>
+                            <p class="card-text fs-6 fs-md-5 fs-lg-4 text-break">{{ p.resumen }}</p>
 
                         </div>
                         <div style=" margin-top: 2%;" class="row align-bottom">
@@ -96,5 +96,4 @@
         <a href="{% url 'apps.post:listar_post' %}" class="btn btn-secondary">Ver mas posteos</a>
     </div>
 </div>
-
 {% endblock %}

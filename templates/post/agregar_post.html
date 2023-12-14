@@ -9,10 +9,6 @@
 <link rel='stylesheet' href='{% static "css/registro.css" %}'>
 {% endblock %}
 
-{% block ckeditor%}
-<script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
-{% endblock %}
-
 {% block contenido %}
 <div class="container">
     <div class="row formulario">
@@ -25,13 +21,33 @@
                             <label for="id_nombre"><i class="fa-solid fa-heading"></i></label>
                             {{form.titulo}}
                         </div>
+
                         <div class="form-group">
                             <label for="id_nombre"><i class="fa-solid fa-clipboard-list"></i></label>
                             {{form.resumen}}
                         </div>
+
                         <div class="form-group">
-                            {{form.contenido}}
+                            <label for="id_nombre"><i class="fa-solid fa-clipboard-list"></i></label>
+                            {{form.autor}}
                         </div>
+
+                        <div class="form-group">
+                            <div class="django-ckeditor-widget" id="ckeditor" data-field-id="id_contenido"
+                                style="display: inline-block;">
+                                <!-- <textarea class="ckeditor" name="contenido" id="ckeditor"></textarea>  -->
+                                {{form.media}}
+                                {{form.contenido|safe}}
+                            </div>
+                            <!-- <script>
+                                ClassicEditor
+                                    .create(document.querySelector('.ckeditor'))
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                            </script> -->
+                        </div>
+
                         <div class="form-group">
                             <span class="helptext">Categoria: </span>
                             {{form.categoria}}
@@ -86,13 +102,4 @@
     document.getElementById("id_activo").placeholder = "Activo";
     document.getElementById("id_imagen").placeholder = "Imagen";
 </script>
-<!-- Inicializa CKEditor en el campo contenido -->
-<script>
-    ClassicEditor
-        .create(document.querySelector('.ckeditor'))
-        .catch(error => {
-            console.error(error);
-        });
-</script>
-
 {% endblock %}

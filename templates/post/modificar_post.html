@@ -4,9 +4,11 @@
 {% block titulo %}
 <title>Modificar Post</title>
 {% endblock %}
+
 {% block css %}
 <link rel='stylesheet' href='{% static "css/registro.css" %}'>
 {% endblock %}
+
 {% block contenido %}
 <div class="container">
     <div class="row formulario">
@@ -24,7 +26,11 @@
                             {{form.resumen}}
                         </div>
                         <div class="form-group">
-                            {{form.contenido}}
+                            <div class="django-ckeditor-widget" id="ckeditor" data-field-id="id_contenido"
+                                style="display: inline-block;">
+                                {{form.media}}
+                                {{form.contenido|safe}}
+                            </div>
                         </div>
                         <div class="form-group">
                             <span class="helptext">Categoria: </span>

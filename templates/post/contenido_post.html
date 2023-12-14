@@ -11,7 +11,7 @@
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Administrar el Post
     </button>
-    <ul class="dropdown-menu dropdown-menu-dark">
+    <ul class="dropdown-menu ">
         <li><a class="dropdown-item" href="{% url 'apps.post:modificar_post' post.pk %}">Modificar Posteo</a></li>
         <li><a class="dropdown-item" href="{% url 'apps.post:confirmar_eliminar' post.pk %}">Borrar Posteo</a></li>
     </ul>
@@ -50,20 +50,20 @@
                                 <h6 class="mb-0">{{ item.usuario.username }}</h6>
                                 <p class="mb-0 text-break opacity-80">{{ item.texto }}</p>
                             </div>
-                            <div class="col-4 row">
-                                <small class=" text-nowrap">{{ item.fecha }}</small>
-                                <button class="btn btn-linck dropdown-toggle" type="button"
-                                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Comentario
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <li><a class="dropdown-item"
-                                                href="{% url 'apps.comentarios:modificar_comentario' item.pk %}">Modificar
-                                                comentario</a></li>
-                                        <li><a class="dropdown-item"
-                                                href="{% url 'apps.comentarios:confirma_eliminar' item.pk %}">Borrar
-                                                comentario</a></li>
-                                    </ul>
+                            <div class="col-4">
+                                <small class=" text-nowrap mb-0">{{ item.fecha }}</small>
+                                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Comentario
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item"
+                                            href="{% url 'apps.comentarios:modificar_comentario' item.pk %}">Modificar
+                                            comentario</a></li>
+                                    <li><a class="dropdown-item"
+                                            href="{% url 'apps.comentarios:confirma_eliminar' item.pk %}">Borrar
+                                            comentario</a></li>
+                                </ul>
                             </div>
 
                         </div>

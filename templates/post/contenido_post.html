@@ -23,7 +23,7 @@
             <div class="image-wrapper">
                 <img src="{{ post.imagen.url }}" class="d-block w-100">
                 <p style="text-align: left;" class="mbr-timeline-date">Fecha de
-                        posteo: {{post.fecha_post}}</p>
+                    posteo: {{post.fecha_post}}</p>
                 <li class="list-group-item"><img src="{{post.colaborador.imagen.url}}" alt="perfil" width="40"
                         height="auto" class="rounded-circle flex-shrink-0"> {{post.colaborador}}
                     {{post.colaborador.apellido}}
@@ -39,26 +39,33 @@
         {% for item in comentarios %}
         {% if user.is_authenticated and user.id == item.usuario.id%}
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Comentario
-            </button>
-            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton">
-                <li><a class="dropdown-item" href="{% url 'apps.comentarios:modificar_comentario' item.pk %}">Modificar comentario</a></li>
-                <li><a class="dropdown-item" href="{% url 'apps.comentarios:confirma_eliminar' item.pk %}">Borrar comentario</a></li>
-            </ul>
             {% endif %}
             <div class="row justify-content-md-center ">
                 <div class="col-md-6">
                     <div class="list-group-item d-flex gap-3 py-3" aria-current="true">
                         <img src="{{ item.usuario.imagen.url }}" style="width:10%; height: 10%;" alt="twbs" width="40"
                             height="40" class="rounded-circle flex-shrink-0">
-                        <div class="d-flex gap-2 w-100 justify-content-between">
+                        <div class="d-flex gap-9 w-100 justify-content-between">
                             <div>
                                 <h6 class="mb-0">{{ item.usuario.username }}</h6>
-                                <p class="mb-0 text-break opacity-75">{{ item.texto }}</p>
+                                <p class="mb-0 text-break opacity-80">{{ item.texto }}</p>
                             </div>
-                            <small class="opacity-50 text-nowrap">{{ item.fecha }}</small>
+                            <div class="col-4 row">
+                                <small class=" text-nowrap">{{ item.fecha }}</small>
+                                <button class="btn btn-linck dropdown-toggle" type="button"
+                                        id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Comentario
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'apps.comentarios:modificar_comentario' item.pk %}">Modificar
+                                                comentario</a></li>
+                                        <li><a class="dropdown-item"
+                                                href="{% url 'apps.comentarios:confirma_eliminar' item.pk %}">Borrar
+                                                comentario</a></li>
+                                    </ul>
+                            </div>
+
                         </div>
                     </div>
                 </div>

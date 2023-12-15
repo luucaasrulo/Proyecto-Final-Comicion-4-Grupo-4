@@ -10,40 +10,59 @@
 <!-- Agrega el titulo a la página-->
 
 <div class="container-fluid" style="margin-top:0%">
-    <h3 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2" style="text-align:center; font-size: 30px;">
+    <h3 class="mbr-section-title mbr-fonts-style aling-center mb-0 display-2"
+        style="text-align:center; font-size: 30px;">
         <strong>HERRAMIENTAS INFORMATICAS</strong>
     </h3>
 </div>
 
 <!-- Agrega botones de ordenar post por fecha y por titulo-->
-<div class="container-fluid d-flex justify-content-center">
-<form method="get" action="{% url 'apps.post:ordenar_por' %}">
-    <button class="btn btn-primary" name="orden" type="submit" value="fecha" style="margin-top: 25px;">Ordenar por
-        fecha</button>
-    <button class="btn btn-primary" name="orden" type="submit" value="titulo" style="margin-top: 25px;">Ordenar por
-        título</button>
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-        style="margin-top: 25px;">
-        Seleccionar Categoria
-    </button>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
-        {% for i in categorias %}
-        <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a>
-        </li>
-        {% endfor %}
-    </ul>
-</form>
+<div class="container d-flex justify-content-start">
+    <form class="btn-group" method="get" action="{% url 'apps.post:ordenar_por' %}">
+        <div class="dropdown-center dropdown" style="margin-right: 4px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Ordenar por
+                fecha
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <button class="dropdown-item" name="orden" type="submit" value="reciente">Mas reciente</button>
+                <button class="dropdown-item" name="orden" type="submit" value="antiguo">Mas Antigüo</button>
+            </ul>
+        </div>
+        <div class="dropdown-center dropdown" style="margin-right: 4px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Ordenar por Titulo
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <button class="dropdown-item" name="orden" type="submit" value="titulo(a-z)">Ordenar A-Z</button>
+                <button class="dropdown-item" name="orden" type="submit" value="titulo(z-a)">Ordenar Z-A</button>
+            </ul>
+        </div>
+        <div class="dropdown-center dropdown" style="margin-right: 4px;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Seleccionar Categoria
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+                <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
+                {% for i in categorias %}
+                <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </form>
 </div>
-
 
 <!-- Agrega los post en forma de cards -->
 
 {% if post %}
-<div class="row gap-3 container mx-auto p-2" style="margin-bottom: 2%;">
+<div class="row gap-3 container mx-auto p-2" style="margin-bottom: 1%;">
     {% for p in post %}
-    <div class="row col-md-4 sm-3">
-        <div class="card" style="text-align: center;">
+    <div class="row col-md-4 sm-3">       
+        <div class="card" style="text-align: center; box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
             <div class="card-img-top" style="display: block; width: 100%; margin: auto;">
                 <img src="{{ p.imagen.url }}" class="card-img-top w-5" alt="{{p.titulo}}">
             </div>
@@ -63,12 +82,42 @@
                 <li class="list-group-item">Categoria: {{p.categoria}}</li>
             </ul>
 
-            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-outline-dark"
-                style="font-size: small;">Leer 
+            <a href="{% url 'apps.post:contenido_post' p.pk %}" class="btn btn-secondary"
+                style="font-size: small;">Leer
                 mas</a>
-        </div>
-    </div>
+        </div>        
+    </div>   
     {% endfor %}
+
+    <!-- Agrega el paginador de la post/views.py para las funciones ordenar_por y listar_por_categoria  -->
+
+    <nav style="margin-top: 0.1%;">
+        <ul class="pagination pagination-circle mg-b-0 justify-content-center" >
+
+            {% if post.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo; Primera</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ post.previous_page_number }}">Anterior</a></li>
+            {% endif %}
+
+
+            {% for i in post.paginator.page_range %}
+            {% if post.number|add:'-1' <= i and post.number|add:'1' >= i %}
+            <li class="page-item {% if post.number == i %}active{% endif %}">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+            {%endif%}
+            {% endfor %}
+
+            {% if post.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ post.next_page_number }}">Siguiente</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ post.paginator.num_pages }}">Ultima
+                    &raquo;</a></li>
+            {% endif %}
+
+        </ul>
+    </nav>
+    <!-- trae el paginador (lo repite) que se usa con la clase ListarPost-->
+    {% include 'post/paginador.html' %} 
 </div>
 {%else%}
 <div class="container-fluid" style="margin-top:2%">
@@ -77,5 +126,5 @@
     </h5>
 </div>
 {% endif %}
-{% include 'post/paginador.html' %}
+
 {% endblock %}

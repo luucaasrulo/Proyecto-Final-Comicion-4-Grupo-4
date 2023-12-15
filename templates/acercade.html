@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block titulo %}
-<title>acerca #dinamico</title>
+<title>Acerca de</title>
 {% endblock %}
 {% block css %}
 <link rel='stylesheet' href='{% static "css/contacto.css" %}'>
@@ -47,7 +47,7 @@
             <p>
                 Anímate. Dale un vistazo
             </p>
-            <a href="{% url 'apps.post:listar_post' %}" class="btn btn-primary">Ir a los posts</a>
+            <a href="{% url 'apps.post:listar_post' %}" class="btn btn-dark">Ir a los posts</a>
         </div>
     </div>
 </div>

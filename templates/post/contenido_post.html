@@ -11,7 +11,7 @@
     <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Administrar el Post
     </button>
-    <ul class="dropdown-menu ">
+    <ul class="dropdown-menu " style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
         <li><a class="dropdown-item" href="{% url 'apps.post:modificar_post' post.pk %}">Modificar Posteo</a></li>
         <li><a class="dropdown-item" href="{% url 'apps.post:confirmar_eliminar' post.pk %}">Borrar Posteo</a></li>
     </ul>
@@ -59,7 +59,7 @@
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Comentario
                                 </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <ul class="dropdown-menu" style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);" aria-labelledby="dropdownMenuButton">
                                     <li><a class="dropdown-item"
                                             href="{% url 'apps.comentarios:modificar_comentario' item.pk %}">Modificar
                                             comentario</a></li>

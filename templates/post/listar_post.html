@@ -25,7 +25,7 @@
                 Ordenar por
                 fecha
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
+            <ul class="dropdown-menu" style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
                 <button class="dropdown-item" name="orden" type="submit" value="reciente">Mas reciente</button>
                 <button class="dropdown-item" name="orden" type="submit" value="antiguo">Mas Antigüo</button>
             </ul>
@@ -35,7 +35,7 @@
                 aria-expanded="false">
                 Ordenar por Titulo
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
+            <ul class="dropdown-menu" style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
                 <button class="dropdown-item" name="orden" type="submit" value="titulo(a-z)">Ordenar A-Z</button>
                 <button class="dropdown-item" name="orden" type="submit" value="titulo(z-a)">Ordenar Z-A</button>
             </ul>
@@ -45,7 +45,7 @@
                 aria-expanded="false">
                 Seleccionar Categoria
             </button>
-            <ul class="dropdown-menu dropdown-menu-dark">
+            <ul class="dropdown-menu" style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
                 <li><a class="dropdown-item" href="{% url 'apps.post:listar_post' %}">Todos</a></li>
                 {% for i in categorias %}
                 <li><a class="dropdown-item" href="{% url 'apps.post:listar_por_categoria' i.nombre %}">{{i.nombre}}</a>

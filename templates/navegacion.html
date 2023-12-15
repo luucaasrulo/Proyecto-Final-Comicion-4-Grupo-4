@@ -49,7 +49,7 @@
                         aria-expanded="false">
                         Administrar
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
                         <li class="nav-item">
                             <a class="dropdown-item" href="{% url 'apps.post:agregar_post' %}">Agregar Post</a>
                         </li>
@@ -91,7 +91,7 @@
                                 </svg>
                                 <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-end px-1" aria-labelledby="bd-theme-text">
+                            <ul class="dropdown-menu dropdown-menu-end px-1" style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);" aria-labelledby="bd-theme-text">
                                 <li>
                                     <button type="button" class="dropdown-item d-flex align-items-center"
                                         data-bs-theme-value="light" aria-pressed="false">
@@ -142,10 +142,10 @@
                         <img src="{{user.imagen.url}}" alt="perfil" width="60" height="auto"
                             class="rounded-circle flex-shrink-0">
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="{% url 'apps.usuarios:perfil' user.pk %}"><img
+                    <ul class="dropdown-menu dropdown-menu-end" style="box-shadow: 0 0 12px rgba(0, 0, 0, .9);">
+                        <li><a class="dropdown-item " href="{% url 'apps.usuarios:perfil' user.pk %}"><img
                                     src="{{user.imagen.url}}" alt="perfil" width="40" height="auto"
-                                    class="rounded-circle flex-shrink-0">{{user.username}}</a></li>
+                                    class="rounded-circle flex-shrink-0">  {{user.username}}</a></li>
                         <li>
                         <li>
                             <hr class="dropdown-divider">
@@ -174,5 +174,5 @@
         </div>
     </div>
 </nav>
-{% include 'usuarios/iniciar_sesionmodal.html' %}
+{% include 'usuarios/iniciar_sesion_modal.html' %}
 <script src='{% static "js/tema.js" %}'></script>

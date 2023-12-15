@@ -9,32 +9,30 @@
                 <form method="post" action="{% url 'apps.usuarios:iniciar_sesion' %}">
                     {% csrf_token %}
                     <div class="mb-3">
-                        <label for="id_username" class="form-label">
-                            <i class="fas fa-user"></i> Nombre de Usuario
-                        </label>
-                        <input type="text" name="username" autofocus="" autocapitalize="none" 
-                        autocomplete="username" maxlength="150" required="" class="form-control" id="id_username">
+                        <i class="fas fa-user"></i> Nombre de Usuario
+                        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username"
+                            maxlength="150" required="" class="form-control" id="id_username">
                     </div>
                     <div class="mb-3">
-                        <label for="id_password" class="form-label">
-                            <i class="fas fa-lock"></i> Contraseña
-                        </label>
-                        <input type="password" name="password" autocomplete="current-password" 
-                        required="" class="form-control" id="id_password">
+                        <i class="fas fa-lock"></i> Contraseña
+                        <input type="password" name="password" autocomplete="current-password" required=""
+                            class="form-control" id="id_password">
                     </div>
                     {% if messages %}
                     <div class="alert alert-danger" role="alert">
                         {% for message in messages %}
-                            {{ message }}
+                        {{ message }}
                         {% endfor %}
                     </div>
                     {% endif %}
-                    <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                    <div class="d-flex  justify-content-center">
+                        <button type="submit" class="btn btn-success">Iniciar Sesión</button>
+                    </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <a href="{% url 'apps.usuarios:registrar' %}" class="btn btn-primary">Crear una cuenta</a>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{% url 'apps.usuarios:registrar' %}" class="btn btn-secondary">Registrarse</a>
+                <button type="button" class="btn active" data-bs-dismiss="modal">Cerrar</button>
             </div>
         </div>
     </div>

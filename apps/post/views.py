@@ -137,6 +137,8 @@ def listar_por_categoria(request, categoria):
 def ordenar_por(request):
     user = request.user
     orden = request.GET.get('orden', '')
+    categorias = Categoria.objects.all()
+    
     if orden == 'reciente':
         post = Post.objects.order_by('-fecha_post')
     elif orden == 'antiguo':
@@ -171,6 +173,7 @@ def ordenar_por(request):
     contexto = {
         'post' : post,
         'orden' : orden, # Agregar el parámetro de orden al contexto para que no se pierda el orden cuando se pasa de pagina en pagina
+        'categorias' : categorias,
     }
     return render(request, template_name, contexto)
 
